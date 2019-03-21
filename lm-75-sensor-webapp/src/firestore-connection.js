@@ -124,13 +124,13 @@ const generateRandomTemperature = (db) => {
 
 const connectUsingFirebase = (collectionName = '') => {
     // Initialize Cloud Firestore through Firebase
-    let config = {
-        apiKey: "AIzaSyBe1BUlEB2UToiRzm7jkuYdh85C7YlCZDs",
-        authDomain: "avid-keel-233206.firebaseapp.com",
-        projectId: "avid-keel-233206",
-        storageBucket: "",
-        messagingSenderId: ""
-    };
+        let config = {
+            apiKey: "AIzaSyBe1BUlEB2UToiRzm7jkuYdh85C7YlCZDs",
+            authDomain: "avid-keel-233206.firebaseapp.com",
+            projectId: "avid-keel-233206",
+            storageBucket: "",
+            messagingSenderId: ""
+        };
 
     !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 

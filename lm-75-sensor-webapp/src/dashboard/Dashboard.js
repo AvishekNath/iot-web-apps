@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
               noWrap
               className={classes.title}
             >
-              Management Dashboard
+              LM-75 Thing Management Dashboard
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -208,9 +208,9 @@ class Dashboard extends React.Component {
             <Router history={history}>
               <div>
               <Switch>
-                  <Route path="/gateway/" exact component={(props) => <GatewayManagement {...props}/>} />
-                  <Route path="/health/:macid/" exact component={(props) => <GatewayHealth {...props}/>} />
-                  <Route path="/snap/:snapid/" exact component={(props) => <SnapManagement {...props}/>} />
+                  <Route path="/dashboard/" exact component={(props) => <GatewayManagement {...props}/>} />
+                  <Route path="/thing/:id/" exact component={(props) => <GatewayHealth {...props}/>} />
+
              </Switch>
             </div>
 

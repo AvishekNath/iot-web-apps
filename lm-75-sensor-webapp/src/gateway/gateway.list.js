@@ -182,11 +182,11 @@ class GatewayDashBoard extends React.Component {
   
 
     redirectToTarget(mac){
-      history.push('/health/' + mac + '/');
+      history.push('/thing/' + mac + '/');
     }
 
     redirectToSnap(id){
-      history.push('/snap/' + id + '/');
+      history.push('/thing/' + id + '/');
     }
 
     render(){
@@ -198,62 +198,24 @@ class GatewayDashBoard extends React.Component {
 
         
 
-       <div className="container">
-        
-        <div className="row">
-          <div className="col-xs">
-              <div className="card">
-              <Typography variant="subheading" color="textSecondary" gutterBottom>
-                Thing Point Status Count 
-              </Typography>
-
-              <div className="row center-xs">
-                <div className="col-xs-6">
-                    <div className="box">
-                      <Example/>
-                    </div>
-                </div> 
-
-                <div className="col-xs-2">
-                  <div className={`row ${classes.rowMargin}`} >
-                    <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Online</Typography>
-                    <Typography component="h3" variant="display1" className={classes.onlineHealth} gutterBottom>2</Typography>
-                  </div>
- 
-                  <div className={`row ${classes.rowMargin}`} >
-
-                  <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Offline</Typography>
-                  <Typography component="h3" variant="display1" className={classes.offlineHealth} gutterBottom>1</Typography>
-                  </div>
-
-                  <div className={`row ${classes.rowMargin}`} >
-                  <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Total</Typography>
-                  <Typography component="h3" variant="display1" className={classes.totalHealth} gutterBottom>3</Typography>
-                  </div>
-                </div>              
-              </div>              
-              </div>
-          </div>
- 
-        </div> 
-
+       <div className="container"> 
 
         <div className="row">
           <div className="col-xs">
               <div className="card">
               <Typography variant="subheading" color="textSecondary" gutterBottom>
-                Thing Point List
+                Thing List
               </Typography>
 
               <Table className={classes.table}>
           <TableHead>
               <TableRow>
-                  <CustomTableCell>Mac Address</CustomTableCell>
+                  <CustomTableCell>Thing Name</CustomTableCell>
                   <CustomTableCell align="left">HostName</CustomTableCell>
                   <CustomTableCell align="left">Location</CustomTableCell>
-                  <CustomTableCell align="left">Snap Bundle Name</CustomTableCell>              
                   <CustomTableCell align="left">Status</CustomTableCell>
                   <CustomTableCell align="left">Health</CustomTableCell>
+                  <CustomTableCell align="left">Charts</CustomTableCell>
               </TableRow>
           </TableHead>
           <TableBody>
@@ -270,7 +232,7 @@ class GatewayDashBoard extends React.Component {
                       component="button"
                       variant="body2"
                       onClick={() => {
-                        this.redirectToSnap(row.mac);
+                        this.redirectToSnap(row.id);
                       }}
                     >
                       {row.bundleid}
@@ -292,7 +254,7 @@ class GatewayDashBoard extends React.Component {
                       {row.health === 1 && (
                           <Tooltip title="View health charts" placement="top-start">
                             <Fab size="small" color="primary" aria-label="Add"
-                              onClick={() => this.redirectToTarget(row.mac)}
+                              onClick={() => this.redirectToTarget(row.id)}
                               className={classes.fabActive}
                               >
                               <TrendingUp/>

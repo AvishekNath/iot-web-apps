@@ -27,24 +27,7 @@ class GatewayHealthChart extends React.Component {
       const { classes } = this.props;
 
        return (
-         <div className="container">
-            <div className="row">
-               <div className="col-xs">
-                  <div className="card">
-                  <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     CPU Usage
-                  </Typography>
- 
-                  <SimpleLineChart 
-                  seriesData={[60,10, 90, 80 , 40, 10 ,5]}
-                  title="CPU Usage"
-                  name="usage"
-                  />
-
-                  </div>
-               </div>
-      
-            </div> 
+         <div className="container"> 
 
             <div className="row">
                <div className="col-xs">
@@ -60,26 +43,7 @@ class GatewayHealthChart extends React.Component {
                   />
                   </div>
                </div>
-            </div> 
-
-
-            <div className="row">
-               <div className="col-xs">
-                  <div className="card">
-                  <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     Memory Usage
-                  </Typography>
- 
-                  <SimpleLineChart 
-                  seriesData={[50,60, 20, 70 , 50, 60, 20 ,90]}
-                  title="Memory Usage"
-                  name="memory"
-                  />
-
-                  </div>
-               </div>
-      
-            </div> 
+            </div>  
 
          </div> 
        )

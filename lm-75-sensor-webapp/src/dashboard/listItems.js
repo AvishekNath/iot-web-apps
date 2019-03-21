@@ -15,7 +15,7 @@ import history from '../history.js';
 //const MyLink = props => <RouterLink to="/open-collective" {...props} />
 
 const redirectToTarget = () =>{
-  history.push('/gateway/'); 
+  history.push('/dashboard/'); 
 };
 
 export const mainListItems = (
