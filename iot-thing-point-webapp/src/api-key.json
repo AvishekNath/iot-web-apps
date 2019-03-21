@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "avid-keel-233206",
+  "private_key_id": "aa19d101a23e157e4ec3a70a299cd94be0f32c9e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCx5MadLTJPUJF1\n6xYE7yLfGJMpZhhCZfPvrKyvQYWu6SBwhdy9v68aPU0su8AwDxf26EccvuTL8+A2\npz/chygwFy+pXoowCcgX+OoctcASiOoKsrnOvwl6BxyEX+iTozjIEgpZ9lIJkMXB\nRiUbKTujfAZK0KkobI/BDmcYbS+XUh4NH8sSoy4V9FfEO2VsMXtIcswlruM+AnIK\nh1M+PFZXgrt6Dvgl5lwyIkvAQbr98DrF6XmeUSDmMm+nA9OocO0wgAm82I1QPnUq\n37KMYA+ffxF6CAm4BgYogGEt1ufbDt5+EUsNCnQpbvxkx3gV5F0a4lt0iOqJV5W1\nMVO4yogfAgMBAAECggEAG7x3SSdfBOXOIDa3WAKZtcjE8ntOxKoqa/qeHAnZGD8/\nRbwMAZvC5zzv7PhttoXhRH0ieqAQLUqIxrdcqiYlRRuVsfshtuwM13asYy3lVMkl\nxeWS5IzS+JnmP4TH+Z5FKqXsGOsNDx0URZZfD7U7QroCLc+10tiGW2FDABh6B0Yi\nokhXZM/WwGE78zHE5F+FIuI4bEeBB9ouO3zq/somaPVUk7A1jlBYz6UbwBjuiV6l\n4f5pVY4V7s4o6gWL2QWci34Tk4YQ8UHrs/M8UQQtc8FW0GZ0KxMpKgZLGcCB+1oH\n3L6dIooFVgmOD2FGvvV6hR6xRaQEcaW0m9X10UqK0QKBgQDuRK6zKYedb+5nJoqn\nvUDeoYhXi9mnfwcKXyirJjuQvEhfPL2tCj4GWobpkbrx355ktdkSv+Zb30XTSKjR\nZuFaxH0NDv/xGLs8W1NdJC4DNsK8xkRqehe70hjbQlNk5WZDwp/IuRkYpWzhk4q+\nBg3MBYTA/8y17gDUIY8HzEPsUQKBgQC/IeEAql9MrnVNbInX5fBCzONMmVVtmgxL\nAy6xOHTBgNQDFRD1XLT/J0ZRODe1ocDt4o9H5B92qreOARY4NgqcnseFYWvZmiWr\nVUjsxgEGHkPznk66u6/CaOQEzllMjjIvIAM5CNMXhw8iX2CxJ1Y5B9+LrKsESHEV\nxqlw+c7BbwKBgQDR80tNK8cH/10/H0MGU0kZ45RUMDL12ITHqtoXFXVfL8lFwiwQ\nkfndd19x6Kul/bmAXIyObPH6+l54somvGsxwQrs+Cn2UYIp7wK1QYVT6GAK4fKxE\ndpj7M0Ib0fHR8iGOi6xoHlHy2bF7g5q5nnQB1ssHlV844CNyyK9T27XuQQKBgQCA\nZQjaQpkcUQG5zhTXNL7ukOaMWWDa7KYfafbe1DcSmjFSFL+8o9duo/qHqwU5fXy2\nEQEBYUyFke8WdMJxZlRAnCUaA7TIi9WMQBFqBSVA7+nj6M+of1Z1ebLbS6cPV2J8\n57tif/wWDQNsqrewqeUxEInqMUb87JES+M5wd0+d/wKBgQDk32+oOwke2fgoZKiw\nvWtV380tGoGeM5470U+B7KwMfWLAe9GnPvOrul2xqYGAzyYxZLVr2mtWqN+IgDuZ\nFrTReN6/FWIH/t228VSRiDR3INkcVkrbeUhE1c6Bf9TS7x51t3bT4T2FHG0ZmoKC\nvejQkDEI+YZynaRMx0M15quzmg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firestore-users@avid-keel-233206.iam.gserviceaccount.com",
+  "client_id": "112501882227588626708",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestore-users%40avid-keel-233206.iam.gserviceaccount.com"
+}
