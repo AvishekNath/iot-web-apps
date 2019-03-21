@@ -195,9 +195,6 @@ class GatewayDashBoard extends React.Component {
 
       return(        
 
-
-        
-
        <div className="container"> 
 
         <div className="row">
@@ -227,17 +224,7 @@ class GatewayDashBoard extends React.Component {
                   <TableCell align="left">{row.hostname}</TableCell>
                   <TableCell align="left">{row.location}</TableCell>
                   <TableCell align="left">
-                  <Tooltip title="View Snaps" placement="top-start"> 
-                    <Link
-                      component="button"
-                      variant="body2"
-                      onClick={() => {
-                        this.redirectToSnap(row.id);
-                      }}
-                    >
-                      {row.bundleid}
-                    </Link>    
-                    </Tooltip>              
+                  {row.status}            
                   </TableCell>
                   <TableCell align="left">
                       {row.status && (

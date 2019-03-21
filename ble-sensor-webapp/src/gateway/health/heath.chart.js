@@ -22,7 +22,16 @@ const styles = {
 
 
 class GatewayHealthChart extends React.Component {
-   
+
+   constructor(props) {
+      super(props);   
+      this.state = { 
+         'pressureSeriesData': '',
+         'humiditySeriesData': '',
+         'co2SeriesData': ''
+      }; 
+    } 
+
     render() {
       const { classes } = this.props;
 
