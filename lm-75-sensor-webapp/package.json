@@ -1,0 +1,45 @@
+{
+  "name": "iot-thing-point-mng-react-webapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@firebase/firestore": "^1.0.5",
+    "@google-cloud/firestore": "^1.0.1",
+    "@google-cloud/pubsub": "^0.24.1",
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "axios": "^0.18.0",
+    "firebase": "^5.8.4",
+    "flexboxgrid": "^6.3.1",
+    "highcharts": "^7.0.3",
+    "http2": "^3.3.7",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "pubnub": "^4.21.7",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-highcharts": "^16.0.2",
+    "react-jsx-highcharts": "^3.5.0",
+    "react-prism": "^4.3.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "recharts": "^1.5.0",
+    "yargs": "^13.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "debug": "react-scripts --debug"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
