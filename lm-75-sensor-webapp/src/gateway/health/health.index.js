@@ -69,6 +69,12 @@ class GatewayHealth extends React.Component {
          usage: '50',
          memory: '70'
       }; 
+
+      this.tpId = '';
+      
+      if(this.props.match){
+         this.tpId = this.props.match.params.id;
+      }
   } 
 
   handleOpen = () => {
@@ -193,7 +199,7 @@ class GatewayHealth extends React.Component {
            
 
             <hr className="hr-line"/>
-            <GatewayHealthChart/>
+            <GatewayHealthChart tpId={this.tpId} />
           </div>
        );
     }

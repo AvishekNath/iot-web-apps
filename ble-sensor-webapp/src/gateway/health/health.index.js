@@ -69,6 +69,12 @@ class GatewayHealth extends React.Component {
          usage: '50',
          memory: '70'
       }; 
+
+      this.tpId = '';
+      
+      if(this.props.match){
+         this.tpId = this.props.match.params.id;
+      }
   } 
 
   handleOpen = () => {
@@ -89,7 +95,7 @@ class GatewayHealth extends React.Component {
       });
     };
 
-    render() {
+    render(){
 
       const { classes } = this.props;
       return (
@@ -145,9 +151,7 @@ class GatewayHealth extends React.Component {
                            onChange={this.handleChange('memory')}
                            margin="normal"
                            variant="outlined"
-                        />
-
-
+                        /> 
                      </form>
                   </div>
                 </div>
@@ -163,10 +167,7 @@ class GatewayHealth extends React.Component {
                           Save
                         </Button>  
                     </div>
-                </div>
-
-                 
-                  
+                </div> 
                   {/* <SimpleModalWrapped /> */}
                 </div>
               </Modal>
@@ -187,13 +188,10 @@ class GatewayHealth extends React.Component {
                </IconButton>
                </div>
 
-             </div>
-           
-
-           
+             </div> 
 
             <hr className="hr-line"/>
-            <GatewayHealthChart/>
+            <GatewayHealthChart tpId={this.tpId}/>
           </div>
        );
     }

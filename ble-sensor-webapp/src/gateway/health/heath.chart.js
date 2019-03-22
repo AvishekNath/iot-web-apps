@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import SimpleLineChart from '../../dashboard/SimpleLineChart';
+import axios from 'axios';
+import { marshallLineChartData } from '../../utils/data-helpers';
 
 const styles = {
    card: {
@@ -26,17 +28,99 @@ class GatewayHealthChart extends React.Component {
    constructor(props) {
       super(props);   
       this.state = { 
+         'temperatureSeriesData': '',
          'pressureSeriesData': '',
          'humiditySeriesData': '',
          'co2SeriesData': ''
       }; 
-    } 
 
-    render() {
-      const { classes } = this.props;
+      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/ble-rest-endpoint`;
+   }
+
+   componentDidMount() { 
+      const self = this;
+
+      // Temp
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'sensorattrs',
+            'sensor': this.props.tpId.toString(),
+            'attr': 'temp',
+            'app_name': 'thingy52'     
+         }
+       })
+      .then(response => {
+         console.log(response);
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            temperatureSeriesData: seriesData
+         });
+      });
+
+      // Humidity
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'sensorattrs',
+            'sensor': this.props.tpId.toString(),
+            'attr': 'humidity',
+            'app_name': 'thingy52'        
+         }
+       })
+      .then(response => {
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            humiditySeriesData: seriesData
+         });
+      });
+
+      // Pressure
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'sensorattrs',
+            'sensor': this.props.tpId.toString(),
+            'attr': 'pressure',
+            'app_name': 'thingy52'      
+         }
+       })
+      .then(response => {
+         console.log(response);
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            pressureSeriesData: seriesData
+         });
+      });
+   }
+
+   render(){
+      const { classes, tpId } = this.props;
 
        return (
          <div className="container"> 
+
+            <div className="row">
+               <div className="col-xs">
+                  <div className="card">
+                  <Typography variant="subheading" color="textSecondary" gutterBottom>
+                     CPU Temperature
+                  </Typography>
+ 
+                  <SimpleLineChart 
+                  seriesData={this.state.temperatureSeriesData}
+                  title="CPU Temperature"
+                  name="temperature"
+                  />
+                  </div>
+               </div>
+            </div> 
 
             <div className="row">
                <div className="col-xs">
@@ -46,7 +130,7 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={[50,60, 90, 80 , 50, 40, 20 ,60]}
+                  seriesData={this.state.pressureSeriesData}
                   title="Pressure"
                   name="pressure"
                   />
@@ -63,7 +147,7 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={[50,60, 90, 80 , 50, 40, 20 ,60]}
+                  seriesData={this.state.humiditySeriesData}
                   title="Humidity"
                   name="humidity"
                   />
@@ -71,27 +155,13 @@ class GatewayHealthChart extends React.Component {
                </div>
             </div>
 
-            <div className="row">
-               <div className="col-xs">
-                  <div className="card">
-                  <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     CO2
-                  </Typography>
- 
-                  <SimpleLineChart 
-                  seriesData={[50,60, 90, 80 , 50, 40, 20 ,60]}
-                  title="CO2"
-                  name="co2"
-                  />
-                  </div>
-               </div>
-            </div>  
+            
  
 
 
          </div> 
        )
-}
+   }
 }
 
 GatewayHealthChart.propTypes = {
