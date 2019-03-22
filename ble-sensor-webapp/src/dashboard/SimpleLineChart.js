@@ -92,10 +92,10 @@ class SimpleLineChart extends React.Component {
           {isLive && (
             <div className="live-button" >
               Live
-              <label class="switch">
-                <input class="toggle" type="checkbox"
-                onChange={ this.handleChecked }/>
-                <span class="slider round"/>
+              <label className="switch">
+                <input className="toggle" type="checkbox"
+                onChange={this.handleChecked}/>
+                <span className="slider round"/>
               </label>
             </div>
           )}
@@ -118,7 +118,6 @@ class SimpleLineChart extends React.Component {
                   <MenuItem value={30}>7 Days</MenuItem>
                 </Select>
               </FormControl>
-
             </form> */}
            </div>
         </div>
