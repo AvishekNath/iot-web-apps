@@ -5,7 +5,7 @@ import {
 
 const data = [
   { name: 'Online', value: 2 },
-  { name: 'Offline', value: 1 }
+  { name: 'Offline', value: 0 }
 ];
 const COLORS = ['#8bc34a', '#CCC'];
 
@@ -14,7 +14,7 @@ const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx, cy, midAngle, innerRadius, outerRadius, percent, index,
 }) => {
-   const radius = innerRadius + (outerRadius - innerRadius) * 0.35;
+   const radius = innerRadius + (outerRadius - innerRadius) * 0.25;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -29,16 +29,29 @@ const renderCustomizedLabel = ({
 };
 
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/3Leoa7f4/';
+export default class Example extends React.Component {
+
+  constructor(props) {
+    super(props);   
+    this.state = { 
+        data: [
+          { name: 'Online', value: 2 },
+          { name: 'Offline', value: 0 }
+        ]
+    }; 
+  }
 
   render() {
-    return (
+    let {online, offline} = this.props;
+    // if(online){
+    //   data[0].value = online;
+    //   data[1].value = offline;
+    // }   
 
-        
-            <PieChart width={260} height={260}>
+    return ( 
+      <PieChart width={260} height={260}>
         <Pie
-          data={data}
+          data={this.state.data}
           cx={130}
           cy={130}
           labelLine={false}
@@ -48,13 +61,10 @@ export default class Example extends PureComponent {
           dataKey="value"
         >
           {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+            this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
           }
         </Pie>
-      </PieChart>
-         
-
-
+      </PieChart> 
         
     );
   }

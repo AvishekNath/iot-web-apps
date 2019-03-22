@@ -154,10 +154,7 @@ class SnapDashBoard extends React.Component {
     constructor(props) {
         super(props);   
         this.state = { 
-            rows: rows,
-            total: 0,
-            online: 0,
-            offline: 0,
+            snapData: [],
             open: false
         }; 
     } 
@@ -191,42 +188,20 @@ class SnapDashBoard extends React.Component {
     };
 
     componentDidMount() {
-      let docRows = [];
-      let online = 0;
-      let offline = 0;
-      axios.get(`https://us-central1-avid-keel-233206.cloudfunctions.net/function-thing-point`)
+      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapbundleinfo&serial=' + this.props.serial;
+      axios.get(url)
         .then(res => {
           let data = res.data;    
-          data.docRows.forEach(function(doc) {
-            docRows.push(doc);
-            if(doc.status === true){
-                online+=1;
-            }
-            if(doc.status === false){
-                offline+=1;
-            }
+          this.setState({
+            snapData: data
           });
-
-          // this.setState({
-          //   rows: docRows,
-          //   total: docRows.length,
-          //   online: online,
-          //   offline: offline
-          // });
       });
     }
   
 
-    redirectToTarget(mac){
-      console.log(mac);
-      history.push('/health/' + mac + '/');
-      //console.log(this.props.history, history);
-      //this.props.history.push('/health/'+ mac);
-    }
-
     render(){
-      const { classes } = this.props;
-      const { rows, total, online, offline } = this.state;
+      const { classes, serial } = this.props;
+      const { snapData } = this.state;
 
       return(        
 
@@ -361,67 +336,46 @@ class SnapDashBoard extends React.Component {
                   <CustomTableCell align="left">Name</CustomTableCell>    
                   <CustomTableCell align="left">Version</CustomTableCell>    
                   <CustomTableCell align="left">Rev</CustomTableCell>           
-                  <CustomTableCell align="left">Tracking</CustomTableCell>              
-                  <CustomTableCell align="left">Developer</CustomTableCell>
-                  <CustomTableCell align="left">Notes</CustomTableCell>
+                  <CustomTableCell align="left">Channel</CustomTableCell>              
+                  <CustomTableCell align="left">Dev Mode</CustomTableCell>
                   <CustomTableCell align="left">Action</CustomTableCell>
                   <CustomTableCell align="left">Current Status</CustomTableCell>
 
               </TableRow>
           </TableHead>
           <TableBody>
-              {rows.map(row => (
+              {snapData.map(row => (
               <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
                   {row.name}
                   </TableCell>
                   <TableCell align="left">{row.version}</TableCell>
-                  <TableCell align="left">{row.rev}</TableCell>
-                  <TableCell align="left">{row.tracking}</TableCell>
+                  <TableCell align="left">{row.revision}</TableCell>
                   <TableCell align="left">
-                    {row.developer}
-                    {/* {row.devmode}
+                  {row.channel !== '' ? row.channel : 'N/A'}</TableCell>
+               
+                  <TableCell align="left">
                       {row.devmode && (
                           <Brightness1 className={classes.active} color='primary' />
                       )}
 
                       {!row.devmode && (
                           <Brightness1 className={classes.offline} color='disabled' />
-                      )} */}
+                      )} 
                       
-                      {/* {row.status ? ' Active' : ' Offline'} */}
-                  </TableCell>
-                  <TableCell align="left">
-
-                    {row.notes}
-                      {/* {row.health === 1 && (
-
-                          <Fab size="small" color="primary" aria-label="Add" className={classes.fab}
-                          onClick={() => this.redirectToTarget(row.mac)}
-                            className={classes.health.good}
-                            >
-                          <TrendingUp/>
-                          </Fab>  
-                                            
-                      )}
-
-                      {row.health === 2 && (
-                           <Fab size="small" color="secondary" aria-label="Edit" className={classes.fab}  onClick={() => this.redirectToTarget(row.mac)}
-                           className={classes.health.bad}>
-                           <TrendingDown/>
-                         </Fab>
-                      )}                 */}
+                      {row.devmode ? ' YES' : ' NO'}
                   </TableCell>
 
                   <TableCell align="left">
-                  <Button 
-                    size="small" 
-                    variant="contained" 
-                    color="secondary"
-                    onClick={this.deleteSnap.bind(this, row)}
-                  >
-                    Delete 
-                  </Button>
+                    <Button 
+                      size="small" 
+                      variant="contained" 
+                      color="secondary"
+                      disabled={!row.del_enabled}
+                      onClick={this.deleteSnap.bind(this, row)}
+                    >
+                      Delete 
+                    </Button>
                   </TableCell>
 
                   <TableCell align="left">

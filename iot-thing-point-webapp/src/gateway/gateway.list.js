@@ -207,25 +207,25 @@ class GatewayDashBoard extends React.Component {
               <div className="row center-xs">
                 <div className="col-xs-6">
                     <div className="box">
-                      <Example/>
+                      <Example online={online} offline={offline}/>
                     </div>
                 </div> 
 
                 <div className="col-xs-2">
                   <div className={`row ${classes.rowMargin}`} >
                     <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Online</Typography>
-                    <Typography component="h3" variant="display1" className={classes.onlineHealth} gutterBottom>2</Typography>
+                    <Typography component="h3" variant="display1" className={classes.onlineHealth} gutterBottom>{online}</Typography>
                   </div>
  
                   <div className={`row ${classes.rowMargin}`} >
 
                   <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Offline</Typography>
-                  <Typography component="h3" variant="display1" className={classes.offlineHealth} gutterBottom>1</Typography>
+                  <Typography component="h3" variant="display1" className={classes.offlineHealth} gutterBottom>{offline}</Typography>
                   </div>
 
                   <div className={`row ${classes.rowMargin}`} >
                   <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Total</Typography>
-                  <Typography component="h3" variant="display1" className={classes.totalHealth} gutterBottom>3</Typography>
+                  <Typography component="h3" variant="display1" className={classes.totalHealth} gutterBottom>{total}</Typography>
                   </div>
                 </div>              
               </div>              
@@ -314,9 +314,7 @@ class GatewayDashBoard extends React.Component {
               
               </div>
           </div>
-      </div>
-      
-      
+      </div> 
      </div>
     )
   }

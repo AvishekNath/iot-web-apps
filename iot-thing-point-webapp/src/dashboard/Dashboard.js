@@ -211,7 +211,7 @@ class Dashboard extends React.Component {
                   <Route path="/" exact component={(props) => <GatewayManagement {...props}/>} />
                   <Route path="/gateway/" exact component={(props) => <GatewayManagement {...props}/>} />
                   <Route path="/health/:macid/" exact component={(props) => <GatewayHealth {...props}/>} />
-                  <Route path="/snap/:snapid/" exact component={(props) => <SnapManagement {...props}/>} />
+                  <Route path="/snap/:serial/" exact component={(props) => <SnapManagement {...props}/>} />
              </Switch>
             </div>
 

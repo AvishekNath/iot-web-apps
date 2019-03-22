@@ -83,11 +83,11 @@ class SimpleLineChart extends React.Component {
         <div className="row end-xs">
 
           <div className="col-xs-2">
-          <div class="live-button">
+          <div className="live-button">
             Live
-            <label class="switch">
-              <input class="toggle" type="checkbox"/>
-              <span class="slider round"/>
+            <label className="switch">
+              <input className="toggle" type="checkbox"/>
+              <span className="slider round"/>
             </label>
           </div>
           {/* <form className={classes.root} autoComplete="off">
