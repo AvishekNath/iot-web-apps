@@ -116,7 +116,7 @@ class GatewayHealthChart extends React.Component {
                   seriesData={this.state.temperatureSeriesData}
                   title="Temperature"
                   name="temperature"
-                  isLive={true}
+                  isLive={false}
                   />
                   </div>
                </div>
