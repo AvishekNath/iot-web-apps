@@ -145,39 +145,53 @@ const rows = [
 class GatewayDashBoard extends React.Component {
 
     constructor(props) {
-        super(props);   
-        this.state = { 
-            rows: rows,
-            total: 0,
-            online: 0,
-            offline: 0
-        }; 
-    } 
+      super(props);   
+      this.state = { 
+          sensorList: []
+      };
+      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/ble-rest-endpoint`;
+    }
 
     componentDidMount() {
-      let docRows = [];
-      let online = 0;
-      let offline = 0;
-      axios.get(`https://us-central1-avid-keel-233206.cloudfunctions.net/function-thing-point`)
-        .then(res => {
-          let data = res.data;    
-          data.docRows.forEach(function(doc) {
-            docRows.push(doc);
-            if(doc.status === true){
-                online+=1;
-            }
-            if(doc.status === false){
-                offline+=1;
-            }
-          });
+      const self = this;
+      axios({
+        method:'get',
+        url: this.chartUrl,
+        params: {
+          type: 'sensorinfo',
+          'app_name': 'i2c'
+        }
+      })
+     .then((response) => {
+        console.log(response);
+        this.setState({
+          sensorList: response.data
+        });
+     });
 
-          // this.setState({
-          //   rows: docRows,
-          //   total: docRows.length,
-          //   online: online,
-          //   offline: offline
-          // });
-      });
+      // let docRows = [];
+      // let online = 0;
+      // let offline = 0;
+      // axios.get(`https://us-central1-avid-keel-233206.cloudfunctions.net/function-thing-point`)
+      //   .then(res => {
+      //     let data = res.data;    
+      //     data.docRows.forEach(function(doc) {
+      //       docRows.push(doc);
+      //       if(doc.status === true){
+      //           online+=1;
+      //       }
+      //       if(doc.status === false){
+      //           offline+=1;
+      //       }
+      //     });
+
+      //     // this.setState({
+      //     //   rows: docRows,
+      //     //   total: docRows.length,
+      //     //   online: online,
+      //     //   offline: offline
+      //     // });
+      // });
     }
   
 
@@ -191,12 +205,9 @@ class GatewayDashBoard extends React.Component {
 
     render(){
       const { classes } = this.props;
-      const { rows, total, online, offline } = this.state;
+      const { sensorList } = this.state;
 
       return(        
-
-
-        
 
        <div className="container"> 
 
@@ -211,47 +222,38 @@ class GatewayDashBoard extends React.Component {
           <TableHead>
               <TableRow>
                   <CustomTableCell>Thing Name</CustomTableCell>
-                  <CustomTableCell align="left">HostName</CustomTableCell>
-                  <CustomTableCell align="left">Location</CustomTableCell>
-                  <CustomTableCell align="left">Status</CustomTableCell>
-                  <CustomTableCell align="left">Health</CustomTableCell>
-                  <CustomTableCell align="left">Charts</CustomTableCell>
+                  <CustomTableCell align="left">App Id</CustomTableCell>
+                  <CustomTableCell align="left">Sensor Id</CustomTableCell>
+                  <CustomTableCell align="left">Thing Point Id</CustomTableCell>
+                  <CustomTableCell align="left">Version</CustomTableCell>
+                  <CustomTableCell align="left">Health Charts</CustomTableCell>
               </TableRow>
           </TableHead>
           <TableBody>
-              {rows.map(row => (
+              {sensorList.map(row => (
               <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
-                  {row.mac}
+                    --
                   </TableCell>
-                  <TableCell align="left">{row.hostname}</TableCell>
-                  <TableCell align="left">{row.location}</TableCell>
+                  <TableCell align="left">{row.app_id}</TableCell>
+                  <TableCell align="left">{row.s_id}</TableCell>
                   <TableCell align="left">
-                  <Tooltip title="View Snaps" placement="top-start"> 
-                    <Link
-                      component="button"
-                      variant="body2"
-                      onClick={() => {
-                        this.redirectToSnap(row.id);
-                      }}
-                    >
-                      {row.bundleid}
-                    </Link>    
-                    </Tooltip>              
+                    {row.tp_id}            
+                  </TableCell>
+                  <TableCell align="left">                      
+                    {row.version }
                   </TableCell>
                   <TableCell align="left">
-                      {row.status && (
-                          <Brightness1 className={classes.active} color='primary' />
-                      )}
 
-                      {!row.status && (
-                          <Brightness1 className={classes.offline} color='disabled' />
-                      )}
-                      
-                      {row.status ? ' Active' : ' Offline'}
-                  </TableCell>
-                  <TableCell align="left">
-                      {row.health === 1 && (
+                          <Tooltip title="View health charts" placement="top-start">
+                            <Fab size="small" color="primary" aria-label="Add"
+                              onClick={() => this.redirectToTarget(row.app_id)}
+                              className={classes.fabActive}
+                              >
+                              <TrendingUp/>
+                            </Fab>  
+                          </Tooltip>
+                      {/* {row.health === 1 && (
                           <Tooltip title="View health charts" placement="top-start">
                             <Fab size="small" color="primary" aria-label="Add"
                               onClick={() => this.redirectToTarget(row.id)}
@@ -270,7 +272,7 @@ class GatewayDashBoard extends React.Component {
                               <TrendingDown/>
                          </Fab>
                           </Tooltip>
-                      )}                
+                      )}                 */}
                   </TableCell>
               </TableRow>
               ))}
@@ -280,7 +282,6 @@ class GatewayDashBoard extends React.Component {
               </div>
           </div>
       </div>
-      
       
      </div>
     )

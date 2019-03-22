@@ -159,7 +159,7 @@ class GatewayDashBoard extends React.Component {
         url: this.chartUrl,
         params: {
           type: 'sensorinfo',
-          'app_name': 'thingy52'
+          'app_name': 'Thingy52'
         }
       })
      .then((response) => {

@@ -60,17 +60,22 @@ class SimpleLineChart extends React.Component {
   constructor(props) {
     super(props);   
     this.state = { 
-        timerange: ''
+        timerange: '',
+        isChecked: false
     }; 
   } 
 
 
-  handleChange = event => {
+  handleChange = event => { 
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  handleChecked = () => {
+    this.setState({isChecked: !this.state.isChecked});
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, isLive } = this.props;
 
     const data = this.props.seriesData;
     const title = this.props.title;
@@ -83,13 +88,17 @@ class SimpleLineChart extends React.Component {
         <div className="row end-xs">
 
           <div className="col-xs-2">
-          <div class="live-button">
-            Live
-            <label class="switch">
-              <input class="toggle" type="checkbox"/>
-              <span class="slider round"/>
-            </label>
-          </div>
+
+          {isLive && (
+            <div className="live-button" >
+              Live
+              <label class="switch">
+                <input class="toggle" type="checkbox"
+                onChange={ this.handleChecked }/>
+                <span class="slider round"/>
+              </label>
+            </div>
+          )}
           {/* <form className={classes.root} autoComplete="off">
                 <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="timerange-simple">Select Time Range</InputLabel>

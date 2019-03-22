@@ -48,7 +48,7 @@ class GatewayHealthChart extends React.Component {
             'type': 'sensorattrs',
             'sensor': this.props.tpId.toString(),
             'attr': 'temp',
-            'app_name': 'thingy52'     
+            'app_name': 'Thingy52'     
          }
        })
       .then(response => {
@@ -68,7 +68,7 @@ class GatewayHealthChart extends React.Component {
             'type': 'sensorattrs',
             'sensor': this.props.tpId.toString(),
             'attr': 'humidity',
-            'app_name': 'thingy52'        
+            'app_name': 'Thingy52'        
          }
        })
       .then(response => {
@@ -87,11 +87,10 @@ class GatewayHealthChart extends React.Component {
             'type': 'sensorattrs',
             'sensor': this.props.tpId.toString(),
             'attr': 'pressure',
-            'app_name': 'thingy52'      
+            'app_name': 'Thingy52'      
          }
        })
       .then(response => {
-         console.log(response);
          let seriesData = marshallLineChartData(response.data);
          console.log(seriesData);
          this.setState({
@@ -115,8 +114,9 @@ class GatewayHealthChart extends React.Component {
  
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
-                  title="CPU Temperature"
+                  title="Temperature"
                   name="temperature"
+                  isLive={true}
                   />
                   </div>
                </div>

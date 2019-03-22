@@ -51,11 +51,7 @@ export default class Example extends PureComponent {
             data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
           }
         </Pie>
-      </PieChart>
-         
-
-
-        
+      </PieChart> 
     );
   }
 }
