@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 
 const data = [
-  { name: 'Online', value: 2 },
+  { name: 'Online', value: 3 },
   { name: 'Offline', value: 0 }
 ];
 const COLORS = ['#8bc34a', '#CCC'];
@@ -35,7 +35,7 @@ export default class Example extends React.Component {
     super(props);   
     this.state = { 
         data: [
-          { name: 'Online', value: 2 },
+          { name: 'Online', value: 3 },
           { name: 'Offline', value: 0 }
         ]
     }; 

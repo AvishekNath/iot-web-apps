@@ -169,13 +169,23 @@ class SnapDashBoard extends React.Component {
 
     deleteSnap = (row) => {
       console.log(row);
-      let rows = this.state.rows;
+      let rows = this.state.snapData;
       let filteredRows = rows.filter((obj) => {
-        return obj.id !== row.id;
+        return obj.name !== row.name;
       });
-      this.setState({
-        rows: filteredRows
+
+      // Delete Snap
+      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=deletesnap';
+      axios.post(url, {
+        'serial': this.props.serial,
+        'name': row.name
+      })
+      .then(res => {
+        let data = res.data;    
+        console.log(data);
+        this.getSnapList();
       });
+
     };
 
     addSnap = (snapObj = {}) => {
@@ -187,7 +197,7 @@ class SnapDashBoard extends React.Component {
       });
     };
 
-    componentDidMount() {
+    getSnapList = () => {
       let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapbundleinfo&serial=' + this.props.serial;
       axios.get(url)
         .then(res => {
@@ -196,8 +206,11 @@ class SnapDashBoard extends React.Component {
             snapData: data
           });
       });
+    };
+
+    componentDidMount() {
+      this.getSnapList();
     }
-  
 
     render(){
       const { classes, serial } = this.props;
@@ -371,7 +384,7 @@ class SnapDashBoard extends React.Component {
                       size="small" 
                       variant="contained" 
                       color="secondary"
-                      disabled={!row.del_enabled}
+                      disabled={!row.del_enable}
                       onClick={this.deleteSnap.bind(this, row)}
                     >
                       Delete 
