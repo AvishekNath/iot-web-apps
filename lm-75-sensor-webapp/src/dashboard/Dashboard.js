@@ -208,6 +208,7 @@ class Dashboard extends React.Component {
             <Router history={history}>
               <div>
               <Switch>
+                  <Route path="/" exact component={(props) => <GatewayManagement {...props}/>} />
                   <Route path="/dashboard/" exact component={(props) => <GatewayManagement {...props}/>} />
                   <Route path="/thing/:id/" exact component={(props) => <GatewayHealth {...props}/>} />
 

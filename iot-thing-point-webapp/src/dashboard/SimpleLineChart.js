@@ -33,12 +33,24 @@ const styles = theme => ({
 
 
 const plotOptions = {
-  series: {
-    pointStart: 2019
-  },
   chart: {
     height: 200,
     type: 'line'
+  },
+  xAxis: {
+    type: "datetime",
+    "dateTimeLabelFormats": {
+      "second": "%H:%M",
+      "minute": "%H:%M",
+      "hour": "%H:%M",
+      "day": "%e-$b-%y",
+      "week": "%e",
+      "month": "%e",
+      "year": "%e"
+    },    
+  },
+  lang: {
+    noData: "No Data Found."
   }
 };
 
@@ -71,7 +83,14 @@ class SimpleLineChart extends React.Component {
         <div className="row end-xs">
 
           <div className="col-xs-2">
-          <form className={classes.root} autoComplete="off">
+          <div class="live-button">
+            Live
+            <label class="switch">
+              <input class="toggle" type="checkbox"/>
+              <span class="slider round"/>
+            </label>
+          </div>
+          {/* <form className={classes.root} autoComplete="off">
                 <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="timerange-simple">Select Time Range</InputLabel>
                 <Select
@@ -91,7 +110,7 @@ class SimpleLineChart extends React.Component {
                 </Select>
               </FormControl>
 
-            </form>
+            </form> */}
            </div>
         </div>
         <HighchartsChart plotOptions={plotOptions}>
@@ -103,14 +122,13 @@ class SimpleLineChart extends React.Component {
 
         <Legend layout="vertical" align="right" verticalAlign="middle" />
 
-        <XAxis>
-          <XAxis.Title>Time</XAxis.Title>
+        <XAxis type="datetime">
+            <XAxis.Title>Time</XAxis.Title>
         </XAxis>
 
         <YAxis>
           <YAxis.Title>{title}</YAxis.Title>
-          <LineSeries name={name} data={data} />
-        
+          <LineSeries name={name} data={data} />        
         </YAxis>
       </HighchartsChart>
       </div>
@@ -119,7 +137,6 @@ class SimpleLineChart extends React.Component {
   }
 
 };
-
 
 SimpleLineChart.propTypes = {
   classes: PropTypes.object.isRequired,

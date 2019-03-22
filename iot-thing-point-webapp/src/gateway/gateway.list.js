@@ -147,7 +147,7 @@ class GatewayDashBoard extends React.Component {
     constructor(props) {
         super(props);   
         this.state = { 
-            rows: rows,
+            rows: [], 
             total: 0,
             online: 0,
             offline: 0
@@ -158,10 +158,10 @@ class GatewayDashBoard extends React.Component {
       let docRows = [];
       let online = 0;
       let offline = 0;
-      axios.get(`https://us-central1-avid-keel-233206.cloudfunctions.net/function-thing-point`)
+      axios.get(`https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=thingpointlist`)
         .then(res => {
           let data = res.data;    
-          data.docRows.forEach(function(doc) {
+          data.forEach(function(doc) {
             docRows.push(doc);
             if(doc.status === true){
                 online+=1;
@@ -171,12 +171,12 @@ class GatewayDashBoard extends React.Component {
             }
           });
 
-          // this.setState({
-          //   rows: docRows,
-          //   total: docRows.length,
-          //   online: online,
-          //   offline: offline
-          // });
+          this.setState({
+            rows: docRows,
+            total: docRows.length,
+            online: online,
+            offline: offline
+          });
       });
     }
   
@@ -193,10 +193,7 @@ class GatewayDashBoard extends React.Component {
       const { classes } = this.props;
       const { rows, total, online, offline } = this.state;
 
-      return(        
-
-
-        
+      return(   
 
        <div className="container">
         
@@ -258,9 +255,9 @@ class GatewayDashBoard extends React.Component {
           </TableHead>
           <TableBody>
               {rows.map(row => (
-              <TableRow key={row.id}>
+              <TableRow key={row.mac_address}>
                   <TableCell component="th" scope="row">
-                  {row.mac}
+                  {row.mac_address}
                   </TableCell>
                   <TableCell align="left">{row.hostname}</TableCell>
                   <TableCell align="left">{row.location}</TableCell>
@@ -270,10 +267,10 @@ class GatewayDashBoard extends React.Component {
                       component="button"
                       variant="body2"
                       onClick={() => {
-                        this.redirectToSnap(row.mac);
+                        this.redirectToSnap(row.mac_address);
                       }}
                     >
-                      {row.bundleid}
+                      {row.bundlename[0]}
                     </Link>    
                     </Tooltip>              
                   </TableCell>
@@ -289,10 +286,10 @@ class GatewayDashBoard extends React.Component {
                       {row.status ? ' Active' : ' Offline'}
                   </TableCell>
                   <TableCell align="left">
-                      {row.health === 1 && (
+                      {row.health === 'green' && (
                           <Tooltip title="View health charts" placement="top-start">
                             <Fab size="small" color="primary" aria-label="Add"
-                              onClick={() => this.redirectToTarget(row.mac)}
+                              onClick={() => this.redirectToTarget(row.mac_address)}
                               className={classes.fabActive}
                               >
                               <TrendingUp/>
