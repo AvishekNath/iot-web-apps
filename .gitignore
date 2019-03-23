@@ -74,3 +74,4 @@ typings/
 
 # FuseBox cache
 .fusebox/
+iot-thing-point-webapp/src/iot-firestore-project.json

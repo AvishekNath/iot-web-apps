@@ -176,16 +176,19 @@ class SnapDashBoard extends React.Component {
 
       // Delete Snap
       let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=deletesnap';
-      axios.post(url, {
-        'serial': this.props.serial,
-        'name': row.name
+      axios({
+        method:'get',
+        url: url,
+        params: {
+          'serial': this.props.serial,
+          'name': row.name   
+        }
       })
       .then(res => {
         let data = res.data;    
         console.log(data);
         this.getSnapList();
       });
-
     };
 
     addSnap = (snapObj = {}) => {
@@ -358,7 +361,7 @@ class SnapDashBoard extends React.Component {
           </TableHead>
           <TableBody>
               {snapData.map(row => (
-              <TableRow key={row.id}>
+              <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                   {row.name}
                   </TableCell>
