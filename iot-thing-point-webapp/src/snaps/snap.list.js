@@ -155,12 +155,14 @@ class SnapDashBoard extends React.Component {
         super(props);   
         this.state = { 
             snapData: [],
-            open: false
+            open: false,
+            addSnapData: []
         }; 
     } 
 
     handleOpen = () => {
       this.setState({ open: true });
+      this.listSnap();
     };
   
     handleClose = () => {
@@ -190,14 +192,38 @@ class SnapDashBoard extends React.Component {
         this.getSnapList();
       });
     };
-
+    // Add Snap
     addSnap = (snapObj = {}) => {
-      let snapRow = createData('pubnub-agent', '5.47-3', 167, 'beta' , 'canonical', 'devmode', 'Installing...')
-      let rows = this.state.rows.slice(0);
-      rows.push(snapRow);
-      this.setState({
-        rows: rows
+      let url = ' https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=addsnap';
+      axios({
+        method:'get',
+        url: url,
+        params: {
+          'serial': this.props.serial,
+          'name': snapObj.name   
+        }
+      })
+      .then(res => {
+        let data = res.data;    
+        console.log('Add Snap', data); 
+        this.getSnapList();
       });
+      
+    };
+
+    // List Snap
+    listSnap = (snapObj = {}) => {      
+      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapstorelist';
+      axios({
+        method:'get',
+        url: url
+      })
+      .then(res => {
+        let data = res.data;    
+        this.setState({ addSnapData: data });
+        console.log('List Snap', data); 
+      });
+      
     };
 
     getSnapList = () => {
@@ -211,13 +237,13 @@ class SnapDashBoard extends React.Component {
       });
     };
 
-    componentDidMount() {
+    componentDidMount(){
       this.getSnapList();
     }
 
     render(){
       const { classes, serial } = this.props;
-      const { snapData } = this.state;
+      const { snapData, addSnapData} = this.state;
 
       return(        
 
@@ -246,80 +272,27 @@ class SnapDashBoard extends React.Component {
                 </div>
 
                 <div className="row">
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                    </div>
 
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-  
+                    {addSnapData.map(snap => (
+                      <div key={snap.serial} className="col-xs">
+                        <Card className={classes.snapCard}>
+                          <CardActionArea>                    
+                            <CardContent>
+                              <Typography gutterBottom variant="h6" component="h2">
+                                {snap.name}
+                              </Typography>
+                              {snap.version}
+                            </CardContent>
+                          </CardActionArea>
+                          <CardActions>
+                            <Button onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="outlined" size="small" color="primary">
+                              Install
+                            </Button> 
+                          </CardActions>
+                        </Card>
+                      </div>                
+                    ))}      
                 </div>
-
 
                 <div className="row bottom-xs">
                     <div className="col-xs">                       
