@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import SimpleLineChart from '../../dashboard/SimpleLineChart';
+import axios from 'axios';
+import { marshallLineChartData } from '../../utils/data-helpers';
 
 const styles = {
    card: {
@@ -22,8 +24,59 @@ const styles = {
 
 
 class GatewayHealthChart extends React.Component {
+
+   constructor(props) {
+      super(props);   
+      this.state = { 
+         'freeMemorySeriesData': '',
+         'cpuUsageSeriesData': ''
+      }; 
+
+      this.chartUrl = `https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server`;
+   }
+ 
+   componentDidMount() { 
+
+      // Temp
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'healthchart',
+            'serial': this.props.serial,
+            'attribute': 'freemem'
+         }
+       })
+      .then(response => {
+         console.log(response);
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            freeMemorySeriesData: seriesData
+         });
+      });
+
+      // Humidity
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'healthchart',
+            'serial': this.props.serial,
+            'attribute': 'cpu_usage'
+         }
+       })
+      .then(response => {
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            cpuUsageSeriesData: seriesData
+         });
+      });
+
+   }
    
-    render() {
+   render() {
       const { classes } = this.props;
 
        return (
@@ -36,7 +89,7 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={[60,10, 90, 80 , 40, 10 ,5]}
+                  seriesData={this.state.cpuUsageSeriesData} isLive={false}
                   title="CPU Usage"
                   name="usage"
                   />
@@ -45,23 +98,7 @@ class GatewayHealthChart extends React.Component {
                </div>
       
             </div> 
-
-            <div className="row">
-               <div className="col-xs">
-                  <div className="card">
-                  <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     CPU Temperature
-                  </Typography>
- 
-                  <SimpleLineChart 
-                  seriesData={[50,60, 90, 80 , 50, 40, 20 ,60]}
-                  title="CPU Temperature"
-                  name="Temperature"
-                  />
-                  </div>
-               </div>
-            </div> 
-
+          
 
             <div className="row">
                <div className="col-xs">
@@ -71,11 +108,10 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={[50,60, 20, 70 , 50, 60, 20 ,90]}
+                  seriesData={this.state.freeMemorySeriesData} isLive={false}
                   title="Memory Usage"
                   name="memory"
                   />
-
                   </div>
                </div>
       

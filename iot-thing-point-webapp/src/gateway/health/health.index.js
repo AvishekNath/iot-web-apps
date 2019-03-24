@@ -69,6 +69,12 @@ class GatewayHealth extends React.Component {
          usage: '50',
          memory: '70'
       }; 
+
+      this.serial = '';
+      
+      if(this.props.match){
+         this.serial = this.props.match.params.serial;
+      }
   } 
 
   handleOpen = () => {
@@ -186,14 +192,10 @@ class GatewayHealth extends React.Component {
                   <Settings/>
                </IconButton>
                </div>
-
-             </div>
-           
-
-           
+             </div>  
 
             <hr className="hr-line"/>
-            <GatewayHealthChart/>
+            <GatewayHealthChart serial={this.serial}/>
           </div>
        );
     }

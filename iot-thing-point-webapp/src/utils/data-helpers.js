@@ -53,3 +53,21 @@ export const getCurrentTimeUTC = (timeStamp) => {
     let seconds = new Date(timeStamp).getSeconds();
     return Date.UTC(year, month, date, hours, mins, seconds);
 };
+
+
+
+export const marshallLineChartData = (series) => {
+  series = series.sort(function(a,b){
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(b.ts) - new Date(a.ts);
+  });
+  const newData = series.map(data => {
+    return [
+      getCurrentTimeUTC(data.ts * 1000),
+      data.value
+    ];
+  });
+
+  return newData;
+};
