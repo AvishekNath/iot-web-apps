@@ -68,32 +68,35 @@ const styles = theme => ({
   totalHealth: {
     color: '#FFF',
     backgroundColor: '#2196f3',
-    borderRadius: '25px',
-    width: '50px',
-    height: '50px',
+    borderRadius: '15px',
+    width: '30px',
+    height: '30px',
     textAlign: 'center',
     display: 'inline-block',
-    paddingTop: '5px'
+    paddingTop: '5px',
+    fontSize: '1.2em'
   },
   onlineHealth: {
     color: '#FFF',
     backgroundColor: '#8bc34a',
-    borderRadius: '25px',
-    width: '50px',
-    height: '50px',
+    borderRadius: '15px',
+    width: '30px',
+    height: '30px',
     textAlign: 'center',
     display: 'inline-block',
-    paddingTop: '5px'
+    paddingTop: '5px',
+    fontSize: '1.2em'
   },
   offlineHealth: {
     color: '#FFF',
-    backgroundColor: '#CCC',
-    borderRadius: '25px',
-    width: '50px',
-    height: '50px',
+    backgroundColor: '#999',
+    borderRadius: '15px',
+    width: '30px',
+    height: '30px',
     textAlign: 'center',
     display: 'inline-block',
-    paddingTop: '5px'
+    paddingTop: '5px',
+    fontSize: '1.2em'
   },
   list: {
     marginTop: '2em'
@@ -197,7 +200,7 @@ class GatewayDashBoard extends React.Component {
 
        <div className="container">
         
-        <div className="row">
+        {/* <div className="row">
           <div className="col-xs">
               <div className="card">
               <Typography variant="subheading" color="textSecondary" gutterBottom>
@@ -211,28 +214,12 @@ class GatewayDashBoard extends React.Component {
                     </div>
                 </div> 
 
-                <div className="col-xs-2">
-                  <div className={`row ${classes.rowMargin}`} >
-                    <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Online</Typography>
-                    <Typography component="h3" variant="display1" className={classes.onlineHealth} gutterBottom>{online}</Typography>
-                  </div>
- 
-                  <div className={`row ${classes.rowMargin}`} >
-
-                  <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Offline</Typography>
-                  <Typography component="h3" variant="display1" className={classes.offlineHealth} gutterBottom>{offline}</Typography>
-                  </div>
-
-                  <div className={`row ${classes.rowMargin}`} >
-                  <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Total</Typography>
-                  <Typography component="h3" variant="display1" className={classes.totalHealth} gutterBottom>{total}</Typography>
-                  </div>
-                </div>              
+                             
               </div>              
               </div>
           </div>
  
-        </div> 
+        </div>  */}
 
 
         <div className="row">
@@ -241,6 +228,25 @@ class GatewayDashBoard extends React.Component {
               <Typography variant="subheading" color="textSecondary" gutterBottom>
                 Thing Point List
               </Typography>
+              <div className="row-count">
+              <div className="row">            
+                  <div className="col-xs">
+                    <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Online</Typography>
+                    <Typography component="h6" variant="display1" className={classes.onlineHealth} gutterBottom>{online}</Typography>
+                  </div>
+
+                  <div className="col-xs">
+
+                    <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Offline</Typography>
+                    <Typography component="h6" variant="display1" className={classes.offlineHealth} gutterBottom>{offline}</Typography>
+                  </div>
+
+                  <div className="col-xs">
+                    <Typography component="h6" variant="display1" gutterBottom className={classes.inline}> Total</Typography>
+                    <Typography component="h6" variant="display1" className={classes.totalHealth} gutterBottom>{total}</Typography>
+                  </div> 
+                </div>
+              </div>
 
               <Table className={classes.table}>
           <TableHead>
