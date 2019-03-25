@@ -33,7 +33,7 @@ class GatewayHealthChart extends React.Component {
          'humiditySeriesData': '',
          'co2SeriesData': '',
          thresholdCpuTemperature: [{
-            value: 90,
+            value: 50,
             color: 'red',
             dashStyle: 'shortdash',
             width: 1,
