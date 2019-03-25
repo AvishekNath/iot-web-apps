@@ -143,14 +143,14 @@
 }
 
 .row-count{
-  background: #dedede;
+  background: #eceff1;
   padding:.2em 1em .3em 1em;
-  margin-top: 1em;
+  margin-top: 1em; 
 }
 
-
 .row-count .col-xs{
-  border-right:1px solid #999;
+  border-right:1px solid #b0bec5;
+  text-align: center;
 }
 
 .row-count .col-xs:last-child{
