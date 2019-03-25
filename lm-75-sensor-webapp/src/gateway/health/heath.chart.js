@@ -76,12 +76,12 @@ class GatewayHealthChart extends React.Component {
                <div className="col-xs">
                   <div className="card">
                   <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     CPU Temperature
+                     Temperature
                   </Typography>
  
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
-                  title="CPU Temperature (%)"
+                  title="Temperature (%)"
                   name="Temperature" 
                   yAxisMax={90}
                   plotLines={this.state.thresholdCpuUsage}

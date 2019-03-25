@@ -136,7 +136,7 @@ class GatewayHealthChart extends React.Component {
                <div className="col-xs">
                   <div className="card">
                   <Typography variant="subheading" color="textSecondary" gutterBottom>
-                     CPU Temperature
+                     Temperature
                   </Typography>
  
                   <SimpleLineChart 
