@@ -18,6 +18,7 @@ import history from '../history.js';
 import axios from 'axios';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import {WbCloudy, RotateRight, Cancel} from '@material-ui/icons';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
@@ -109,7 +110,12 @@ const styles = theme => ({
   },
   status: {
     cursor: 'default',
-    width: '100px'
+    width: '80px',
+    display: 'inline-block',
+    position: 'relative',
+    top:'-5px',
+    padding:'5px 10px',
+    color: '#90a4ae'
   }
 });
 
@@ -292,7 +298,7 @@ class SnapDashBoard extends React.Component {
 
                     {addSnapData.map(snap => (
                       <div key={snap.serial} className="col-xs">
-                        <Card className={classes.snapCard}>
+                        <Card className={snap.clicked === true ? classes.snapCard + ' disable-card' :  classes.snapCard}>
                           <CardActionArea>                    
                             <CardContent>
                               <Typography gutterBottom variant="h6" component="h2">
@@ -386,9 +392,21 @@ class SnapDashBoard extends React.Component {
                   </TableCell>
 
                   <TableCell align="left">
-                  <Button size="small" variant="outlined" color="primary" className={classes.status}>
-                    {row.status} 
-                  </Button>
+                    {row.status === 'Installing' && (
+                      <RotateRight/>
+                    )}
+
+                    {row.status === 'Installed' && (
+                      <WbCloudy/>
+                    )}
+
+                    {row.status === 'Failed' && (
+                      <Cancel/>
+                    )}
+
+                    <div className={classes.status}>
+                      {row.status} 
+                    </div>
                   </TableCell>
               </TableRow>
               ))}

@@ -110,7 +110,7 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.cpuUsageSeriesData} isLive={false} yAxisMax={100}
                   title="CPU Usage (%)"
-                  name="usage"
+                  name="Usage"
                   plotLines={this.state.thresholdCpuUsage}
                   />
 
@@ -130,7 +130,7 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.freeMemorySeriesData} isLive={false} yAxisMax={1000}
                   title="Memory Usage (Mb)"
-                  name="memory"
+                  name="Memory"
                   plotLines={this.state.thresholdfreemomory}
                   />
                   </div>

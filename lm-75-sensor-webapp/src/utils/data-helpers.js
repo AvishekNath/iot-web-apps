@@ -64,7 +64,7 @@ export const marshallLineChartData = (series) => {
   const newData = series.map(data => {
     return [
       getCurrentTimeUTC(data.ts * 1000),
-      data.value
+      Number(data.value.toFixed(2))
     ];
   });
 

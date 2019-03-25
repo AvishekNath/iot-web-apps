@@ -142,7 +142,7 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
                   title="Temperature (Celcius)"
-                  name="temperature"
+                  name="Temperature"
                   isLive={false}
                   yAxisMax={100}
                   plotLines={this.state.thresholdCpuTemperature}
@@ -161,7 +161,7 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.pressureSeriesData}
                   title="Pressure (hPa)"
-                  name="pressure"
+                  name="Pressure"
                   />
                   </div>
                </div>
@@ -178,7 +178,7 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.humiditySeriesData}
                   title="Humidity (%)"
-                  name="humidity"
+                  name="Humidity"
                   yAxisMax={100}
                   plotLines={this.state.thresholdHumidity}
                   />

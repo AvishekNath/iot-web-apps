@@ -223,7 +223,7 @@ class GatewayDashBoard extends React.Component {
               <TableRow>
                   <CustomTableCell>Thing Name</CustomTableCell>
                   <CustomTableCell align="left">App Id</CustomTableCell>
-                  <CustomTableCell align="left">Sensor Id</CustomTableCell>
+                  {/* <CustomTableCell align="left">Sensor Id</CustomTableCell> */}
                   <CustomTableCell align="left">Thing Point Name</CustomTableCell>
                   <CustomTableCell align="left">Version</CustomTableCell>
                   <CustomTableCell align="left">Health Charts</CustomTableCell>
@@ -236,7 +236,7 @@ class GatewayDashBoard extends React.Component {
                   {row.sensor_name}
                   </TableCell>
                   <TableCell align="left">{row.app_id}</TableCell>
-                  <TableCell align="left">{row.s_id}</TableCell>
+                  {/* <TableCell align="left">{row.s_id}</TableCell> */}
                   <TableCell align="left">
                     {row.tp_name}            
                   </TableCell>

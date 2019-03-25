@@ -304,9 +304,9 @@ class GatewayDashBoard extends React.Component {
                                             
                       )}
 
-                      {row.health === 2 && (
+                      {row.health === 'red' && (
                           <Tooltip title="View health charts" placement="top-start"> 
-                           <Fab size="small" color="secondary" aria-label="Edit" onClick={() => this.redirectToTarget(row.serial)}
+                           <Fab size="small" color="secondary" aria-label="Edit" disabled={row.health === 'red'}
                               className={classes.fabOffline}>
                               <TrendingDown/>
                          </Fab>
