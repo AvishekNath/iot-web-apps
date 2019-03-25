@@ -36,27 +36,27 @@ class GatewayHealthChart extends React.Component {
             value: 90,
             color: 'red',
             dashStyle: 'shortdash',
-            width: 2,
+            width: 1,
             label: {
-               text: 'Threshhold'
+               text: 'Threshold'
             }
          }],
          thresholdPressure: [{
-            value: 950,
+            value: 940,
             color: 'red',
             dashStyle: 'shortdash',
-            width: 2,
+            width: 1,
             label: {
-               text: 'Threshhold'
+               text: 'Threshold'
             }
          }],
          thresholdHumidity: [{
             value: 70,
             color: 'red',
             dashStyle: 'shortdash',
-            width: 2,
+            width: 1,
             label: {
-               text: 'Threshhold'
+               text: 'Threshold'
             }
          }]
       }; 

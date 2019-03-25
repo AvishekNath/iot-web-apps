@@ -34,18 +34,18 @@ class GatewayHealthChart extends React.Component {
             value: 90,
             color: 'red',
             dashStyle: 'shortdash',
-            width: 2,
+            width: 1,
             label: {
-               text: 'Threshhold'
+               text: 'Threshold'
             }
          }],
          'thresholdfreemomory': [{
             value: 900,
             color: 'red',
             dashStyle: 'shortdash',
-            width: 2,
+            width: 1,
             label: {
-               text: 'Threshhold'
+               text: 'Threshold'
             }
          }]
       }; 
