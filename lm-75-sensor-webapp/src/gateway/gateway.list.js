@@ -149,7 +149,7 @@ class GatewayDashBoard extends React.Component {
       this.state = { 
           sensorList: []
       };
-      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/ble-rest-endpoint`;
+      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/lm75-rest-endpoint`;
     }
 
     componentDidMount() {
@@ -159,7 +159,7 @@ class GatewayDashBoard extends React.Component {
         url: this.chartUrl,
         params: {
           type: 'sensorinfo',
-          'app_name': 'i2c'
+          'app_name': 'lm75'
         }
       })
      .then((response) => {

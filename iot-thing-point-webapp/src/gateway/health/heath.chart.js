@@ -37,7 +37,7 @@ class GatewayHealthChart extends React.Component {
  
    componentDidMount() { 
 
-      // Temp
+      // Free mem
       axios({
          method:'get',
          url: this.chartUrl,
@@ -56,7 +56,7 @@ class GatewayHealthChart extends React.Component {
          });
       });
 
-      // Humidity
+      // CPU
       axios({
          method:'get',
          url: this.chartUrl,

@@ -35,7 +35,7 @@ const styles = theme => ({
   },
   table: {
     minWidth: 700,
-    marginTop: '2em'
+    marginTop: '1em'
   },
   active: {
     fontSize: 12,

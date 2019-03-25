@@ -56,7 +56,7 @@ export const getCurrentTimeUTC = (timeStamp) => {
 
 
 
-export const marshallLineChartData = (series) => {
+export const marshallLineChartData =(series) => {
   series = series.sort(function(a,b){
     // Turn your strings into dates, and then subtract them
     // to get a value that is either negative, positive, or zero.

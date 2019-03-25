@@ -70,7 +70,7 @@ class SimpleLineChart extends React.Component {
 
         <div className="row end-xs">
 
-          <div className="col-xs-2">
+          {/* <div className="col-xs-2">
           <form className={classes.root} autoComplete="off">
                 <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="timerange-simple">Select Time Range</InputLabel>
@@ -92,8 +92,8 @@ class SimpleLineChart extends React.Component {
               </FormControl>
 
             </form>
-           </div>
-        </div>
+           </div>*/}
+        </div> 
         <HighchartsChart plotOptions={plotOptions}>
         <Chart height={plotOptions.chart.height}/>
   {/* 
@@ -103,8 +103,8 @@ class SimpleLineChart extends React.Component {
 
         <Legend layout="vertical" align="right" verticalAlign="middle" />
 
-        <XAxis>
-          <XAxis.Title>Time</XAxis.Title>
+        <XAxis type="datetime">
+            <XAxis.Title>Time</XAxis.Title>
         </XAxis>
 
         <YAxis>

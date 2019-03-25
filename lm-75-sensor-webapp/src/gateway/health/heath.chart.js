@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import SimpleLineChart from '../../dashboard/SimpleLineChart';
+import axios from 'axios';
+import { marshallLineChartData } from '../../utils/data-helpers';
 
 const styles = {
    card: {
@@ -23,7 +25,39 @@ const styles = {
 
 class GatewayHealthChart extends React.Component {
    
-    render() {
+   constructor(props) {
+      super(props);   
+      this.state = { 
+         'temperatureSeriesData': []
+      }; 
+
+      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/lm75-rest-endpoint`;
+   }
+
+   componentDidMount() { 
+      const self = this;
+      // Temp
+      axios({
+         method:'get',
+         url: this.chartUrl,
+         params: {
+            'type': 'sensorattrs',
+            'sensor': this.props.tpId.toString(),
+            'attr': 'temperature',
+            'app_name': 'lm75'     
+         }
+       })
+      .then(response => {
+         console.log(response);
+         let seriesData = marshallLineChartData(response.data);
+         console.log(seriesData);
+         this.setState({
+            temperatureSeriesData: seriesData
+         });
+      });
+   }
+
+   render() {
       const { classes } = this.props;
 
        return (
@@ -37,7 +71,7 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={[50,60, 90, 80 , 50, 40, 20 ,60]}
+                  seriesData={this.state.temperatureSeriesData}
                   title="CPU Temperature"
                   name="Temperature"
                   />
