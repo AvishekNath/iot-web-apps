@@ -29,8 +29,27 @@ class GatewayHealthChart extends React.Component {
       super(props);   
       this.state = { 
          'freeMemorySeriesData': '',
-         'cpuUsageSeriesData': ''
+         'cpuUsageSeriesData': '',
+         'thresholdCpuUsage': [{
+            value: 90,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }],
+         'thresholdfreemomory': [{
+            value: 900,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }]
       }; 
+      
 
       this.chartUrl = `https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server`;
    }
@@ -89,9 +108,10 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={this.state.cpuUsageSeriesData} isLive={false}
-                  title="CPU Usage"
+                  seriesData={this.state.cpuUsageSeriesData} isLive={false} yAxisMax={100}
+                  title="CPU Usage (%)"
                   name="usage"
+                  plotLines={this.state.thresholdCpuUsage}
                   />
 
                   </div>
@@ -108,9 +128,10 @@ class GatewayHealthChart extends React.Component {
                   </Typography>
  
                   <SimpleLineChart 
-                  seriesData={this.state.freeMemorySeriesData} isLive={false}
-                  title="Memory Usage"
+                  seriesData={this.state.freeMemorySeriesData} isLive={false} yAxisMax={1000}
+                  title="Memory Usage (Mb)"
                   name="memory"
+                  plotLines={this.state.thresholdfreemomory}
                   />
                   </div>
                </div>

@@ -37,6 +37,9 @@ const plotOptions = {
     height: 200,
     type: 'line'
   },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.y}</b> ({point.percentage:.1f}%)<br/>' 
+  },  
   xAxis: {
     type: "datetime",
     "dateTimeLabelFormats": {
@@ -51,7 +54,7 @@ const plotOptions = {
   },
   lang: {
     noData: "No Data Found."
-  }
+  }  
 };
 
 
@@ -77,6 +80,7 @@ class SimpleLineChart extends React.Component {
   render() {
     const { classes } = this.props;
     const { isLive } = this.props;
+    const { yAxisMax, plotLines} = this.props;
 
     const data = this.props.seriesData;
     const title = this.props.title;
@@ -135,7 +139,7 @@ class SimpleLineChart extends React.Component {
             <XAxis.Title>Time</XAxis.Title>
         </XAxis>
 
-        <YAxis>
+        <YAxis max={yAxisMax} plotLines={plotLines}>
           <YAxis.Title>{title}</YAxis.Title>
           <LineSeries name={name} data={data} />        
         </YAxis>

@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
               noWrap
               className={classes.title}
             >
-              Nordic Thingy: 52 Sensor Management Dashboard
+              Thingy52
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
