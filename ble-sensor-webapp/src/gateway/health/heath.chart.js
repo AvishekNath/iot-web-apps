@@ -47,7 +47,7 @@ class GatewayHealthChart extends React.Component {
          params: {
             'type': 'sensorattrs',
             'sensor': this.props.tpId.toString(),
-            'attr': 'temp',
+            'attr': 'temperature',
             'app_name': 'Thingy52'     
          }
        })
@@ -114,7 +114,7 @@ class GatewayHealthChart extends React.Component {
  
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
-                  title="Temperature"
+                  title="Temperature (Celcius)"
                   name="temperature"
                   isLive={false}
                   />
@@ -131,7 +131,7 @@ class GatewayHealthChart extends React.Component {
  
                   <SimpleLineChart 
                   seriesData={this.state.pressureSeriesData}
-                  title="Pressure"
+                  title="Pressure (hPa)"
                   name="pressure"
                   />
                   </div>
@@ -148,7 +148,7 @@ class GatewayHealthChart extends React.Component {
  
                   <SimpleLineChart 
                   seriesData={this.state.humiditySeriesData}
-                  title="Humidity"
+                  title="Humidity (%)"
                   name="humidity"
                   />
                   </div>

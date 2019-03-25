@@ -8,10 +8,10 @@ export default class GatewayManagement extends React.Component {
     render() {
        return (
           <div>
-               <Typography variant="h6" color="textSecondary" gutterBottom>
+               {/* <Typography variant="h6" color="textSecondary" gutterBottom>
                   TP(Thing Point) DashBoard
                </Typography>
-               <hr className="hr-line"/>
+               <hr className="hr-line"/> */}
              <GatewayDashBoard/>
           </div>
        );

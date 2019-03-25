@@ -72,7 +72,7 @@ class GatewayHealthChart extends React.Component {
  
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
-                  title="CPU Temperature"
+                  title="CPU Temperature (%)"
                   name="Temperature"
                   />
                   </div>

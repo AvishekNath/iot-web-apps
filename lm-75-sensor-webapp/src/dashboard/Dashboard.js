@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
               noWrap
               className={classes.title}
             >
-              LM-75 Thing Management Dashboard
+              LM-75
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
