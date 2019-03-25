@@ -162,8 +162,6 @@ class GatewayHealthChart extends React.Component {
                   seriesData={this.state.pressureSeriesData}
                   title="Pressure (hPa)"
                   name="pressure"
-                  yAxisMax={1000}
-                  plotLines={this.state.thresholdPressure}
                   />
                   </div>
                </div>

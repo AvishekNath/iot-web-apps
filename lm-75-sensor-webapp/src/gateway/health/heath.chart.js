@@ -35,7 +35,7 @@ class GatewayHealthChart extends React.Component {
             dashStyle: 'shortdash',
             width: 2,
             label: {
-               text: 'Threshold'
+               text: 'Threshhold'
             }
          }],
       }; 

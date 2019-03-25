@@ -198,6 +198,15 @@ class SnapDashBoard extends React.Component {
     };
     // Add Snap
     addSnap = (snapObj = {}) => {
+
+      let addedSnapData = this.state.addSnapData.slice(0);
+      addedSnapData.forEach(obj => {
+        if(obj.serial === snapObj.serial){
+          obj.clicked = true;
+        }
+      });
+
+      this.setState({ addSnapData: addedSnapData });
       let url = ' https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=addsnap';
       axios({
         method:'get',
@@ -226,7 +235,8 @@ class SnapDashBoard extends React.Component {
         }
       })
       .then(res => {
-        let data = res.data;    
+        let data = res.data;
+        data.clicked = false;    
         this.setState({ addSnapData: data });
         console.log('List Snap', data); 
       });
@@ -289,11 +299,11 @@ class SnapDashBoard extends React.Component {
                                 {snap.name}
                               </Typography>
                               <hr/>
-                              ver. {snap.version}
+                              Version: {snap.version}
                             </CardContent>
                           </CardActionArea>
                           <CardActions>
-                            <Button disabled={snap.status !== 'install'} onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="contained" size="small" color="primary">
+                            <Button disabled={snap.clicked === true || snap.status !== 'install'} onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="contained" size="small" color="primary">
                               Install
                             </Button> 
                           </CardActions>
@@ -332,11 +342,11 @@ class SnapDashBoard extends React.Component {
               <TableRow>
                   <CustomTableCell align="left">Name</CustomTableCell>    
                   <CustomTableCell align="left">Version</CustomTableCell>    
-                  <CustomTableCell align="left">Rev</CustomTableCell>           
+                  <CustomTableCell align="left">Revision</CustomTableCell>           
                   <CustomTableCell align="left">Channel</CustomTableCell>              
-                  <CustomTableCell align="left">Dev Mode</CustomTableCell>
+                  {/* <CustomTableCell align="left">Dev Mode</CustomTableCell> */}
                   <CustomTableCell align="left">Action</CustomTableCell>
-                  <CustomTableCell align="left">Current Status</CustomTableCell>
+                  <CustomTableCell align="left">Status</CustomTableCell>
 
               </TableRow>
           </TableHead>
@@ -351,7 +361,7 @@ class SnapDashBoard extends React.Component {
                   <TableCell align="left">
                   {row.channel !== '' ? row.channel : 'N/A'}</TableCell>
                
-                  <TableCell align="left">
+                  {/* <TableCell align="left">
                       {row.devmode && (
                           <Brightness1 className={classes.active} color='primary' />
                       )}
@@ -361,7 +371,7 @@ class SnapDashBoard extends React.Component {
                       )} 
                       
                       {row.devmode ? ' YES' : ' NO'}
-                  </TableCell>
+                  </TableCell> */}
 
                   <TableCell align="left">
                     <Button 

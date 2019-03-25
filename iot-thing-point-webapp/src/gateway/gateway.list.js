@@ -254,7 +254,7 @@ class GatewayDashBoard extends React.Component {
                   <CustomTableCell>Mac Address</CustomTableCell>
                   <CustomTableCell align="left">HostName</CustomTableCell>
                   <CustomTableCell align="left">Location</CustomTableCell>
-                  <CustomTableCell align="left">Snap Bundle Name</CustomTableCell>              
+                  <CustomTableCell align="left">Snap List</CustomTableCell>              
                   <CustomTableCell align="left">Status</CustomTableCell>
                   <CustomTableCell align="left">Health</CustomTableCell>
               </TableRow>
@@ -276,7 +276,7 @@ class GatewayDashBoard extends React.Component {
                         this.redirectToSnap(row.serial);
                       }}
                     >
-                      {row.bundlename[0]}
+                      View
                     </Link>    
                     </Tooltip>              
                   </TableCell>
