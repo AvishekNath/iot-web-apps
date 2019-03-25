@@ -39,6 +39,14 @@ const plotOptions = {
   chart: {
     height: 200,
     type: 'line'
+  },
+  xAxis: {
+    type: 'datetime',
+    dateTimeLabelFormats: {
+        day: '%e of %b',
+        minute:  '%I:%M',
+        hour: '%I:%M'
+    }
   }
 };
 

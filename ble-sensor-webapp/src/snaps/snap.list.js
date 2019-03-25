@@ -106,6 +106,9 @@ const styles = theme => ({
     position: 'absolute',
     right: '2em',
     bottom: '2em'
+  },
+  status: {
+    cursor: 'default'
   }
 });
 
@@ -234,118 +237,7 @@ class SnapDashBoard extends React.Component {
         <div className="row">
           <div className="col-xs">
               <div className="card">
-
-              <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={this.state.open}
-                onClose={this.handleClose}
-                disableBackdropClick={false}
-                style={{alignItems:'center',justifyContent:'center'}}
-              >
-                <div style={getModalStyle()} className={classes.paper}>
-
-                <div className="row">
-                  <div className="col-xs">
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Add Snaps
-                  </Typography>
-                  <hr/>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                    </div>
-
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-
-                  <div className="col-xs">
-                  <Card className={classes.snapCard}>
-                    <CardActionArea>                    
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2">
-                          pub-nub agent 
-                        </Typography>
-                        (ver.16.04) (Beta)
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={this.addSnap.bind(this, {})} className={classes.installBtn} variant="outlined" size="small" color="primary">
-                        Install
-                      </Button> 
-                    </CardActions>
-                  </Card>
-                  </div>
-  
-                </div>
-
-
-                <div className="row bottom-xs">
-                    <div className="col-xs">                       
-                        <Button 
-                          className={classes.closeBtn} 
-                          variant="contained" 
-                          color="secondary"
-                          onClick={this.handleClose}
-                        >
-                          Close
-                        </Button>  
-                    </div>
-                </div>
-                  
-                  {/* <SimpleModalWrapped /> */}
-                </div>
-              </Modal>
+ 
 
               <Button size="small" variant="contained" color="primary" className={classes.addSnaps} 
               onClick={this.handleOpen}>
@@ -425,7 +317,7 @@ class SnapDashBoard extends React.Component {
                   </TableCell>
 
                   <TableCell align="left">
-                  <Button size="small" variant="outlined" color="primary">
+                  <Button size="small" variant="outlined" color="primary" className={classes.status} >
                     {row.status} 
                   </Button>
                   </TableCell>

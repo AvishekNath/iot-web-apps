@@ -106,6 +106,9 @@ const styles = theme => ({
     position: 'absolute',
     right: '2em',
     bottom: '2em'
+  },
+  status: {
+    cursor: 'default'
   }
 });
 
@@ -281,11 +284,11 @@ class SnapDashBoard extends React.Component {
                               <Typography gutterBottom variant="h6" component="h2">
                                 {snap.name}
                               </Typography>
-                              {snap.version}
+                              ver. {snap.version}
                             </CardContent>
                           </CardActionArea>
                           <CardActions>
-                            <Button onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="outlined" size="small" color="primary">
+                            <Button onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="contained" size="small" color="primary">
                               Install
                             </Button> 
                           </CardActions>
@@ -368,7 +371,7 @@ class SnapDashBoard extends React.Component {
                   </TableCell>
 
                   <TableCell align="left">
-                  <Button size="small" variant="outlined" color="primary">
+                  <Button size="small" variant="outlined" color="primary" className={classes.status}>
                     {row.status} 
                   </Button>
                   </TableCell>
