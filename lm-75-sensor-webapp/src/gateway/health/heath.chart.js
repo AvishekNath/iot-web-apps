@@ -30,7 +30,7 @@ class GatewayHealthChart extends React.Component {
       this.state = { 
          'temperatureSeriesData': [],
          'thresholdCpuUsage': [{
-            value: 90,
+            value: 50,
             color: 'red',
             dashStyle: 'shortdash',
             width: 2,
