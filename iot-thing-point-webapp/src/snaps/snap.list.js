@@ -95,7 +95,7 @@ const styles = theme => ({
     backgroundColor: '#2196f3'
   },
   snapCard: {
-    
+    backgroundColor: '#efefef'
   },
   installBtn: {
     float: 'right',
@@ -288,11 +288,12 @@ class SnapDashBoard extends React.Component {
                               <Typography gutterBottom variant="h6" component="h2">
                                 {snap.name}
                               </Typography>
+                              <hr/>
                               ver. {snap.version}
                             </CardContent>
                           </CardActionArea>
                           <CardActions>
-                            <Button onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="contained" size="small" color="primary">
+                            <Button disabled={snap.status !== 'install'} onClick={this.addSnap.bind(this, snap)} className={classes.installBtn} variant="contained" size="small" color="primary">
                               Install
                             </Button> 
                           </CardActions>
