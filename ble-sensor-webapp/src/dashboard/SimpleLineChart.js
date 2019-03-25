@@ -80,7 +80,7 @@ class SimpleLineChart extends React.Component {
     const data = this.props.seriesData;
     const title = this.props.title;
     const name = this.props.name;
-
+    const { yAxisMax, plotLines} = this.props;
      return (
 
       <div> 
@@ -134,7 +134,7 @@ class SimpleLineChart extends React.Component {
             <XAxis.Title>Time</XAxis.Title>
         </XAxis>
 
-        <YAxis>
+        <YAxis max={yAxisMax} plotLines={plotLines}>
           <YAxis.Title>{title}</YAxis.Title>
           <LineSeries name={name} data={data} />        
         </YAxis>

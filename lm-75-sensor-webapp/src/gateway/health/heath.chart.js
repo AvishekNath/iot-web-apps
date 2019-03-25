@@ -28,7 +28,16 @@ class GatewayHealthChart extends React.Component {
    constructor(props) {
       super(props);   
       this.state = { 
-         'temperatureSeriesData': []
+         'temperatureSeriesData': [],
+         'thresholdCpuUsage': [{
+            value: 90,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }],
       }; 
 
       this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/lm75-rest-endpoint`;
@@ -73,7 +82,9 @@ class GatewayHealthChart extends React.Component {
                   <SimpleLineChart 
                   seriesData={this.state.temperatureSeriesData}
                   title="CPU Temperature (%)"
-                  name="Temperature"
+                  name="Temperature" 
+                  yAxisMax={90}
+                  plotLines={this.state.thresholdCpuUsage}
                   />
                   </div>
                </div>

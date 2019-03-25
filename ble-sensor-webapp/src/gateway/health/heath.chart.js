@@ -31,7 +31,34 @@ class GatewayHealthChart extends React.Component {
          'temperatureSeriesData': '',
          'pressureSeriesData': '',
          'humiditySeriesData': '',
-         'co2SeriesData': ''
+         'co2SeriesData': '',
+         thresholdCpuTemperature: [{
+            value: 90,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }],
+         thresholdPressure: [{
+            value: 950,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }],
+         thresholdHumidity: [{
+            value: 70,
+            color: 'red',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+               text: 'Threshhold'
+            }
+         }]
       }; 
 
       this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/ble-rest-endpoint`;
@@ -117,6 +144,8 @@ class GatewayHealthChart extends React.Component {
                   title="Temperature (Celcius)"
                   name="temperature"
                   isLive={false}
+                  yAxisMax={100}
+                  plotLines={this.state.thresholdCpuTemperature}
                   />
                   </div>
                </div>
@@ -133,6 +162,8 @@ class GatewayHealthChart extends React.Component {
                   seriesData={this.state.pressureSeriesData}
                   title="Pressure (hPa)"
                   name="pressure"
+                  yAxisMax={1000}
+                  plotLines={this.state.thresholdPressure}
                   />
                   </div>
                </div>
@@ -150,6 +181,8 @@ class GatewayHealthChart extends React.Component {
                   seriesData={this.state.humiditySeriesData}
                   title="Humidity (%)"
                   name="humidity"
+                  yAxisMax={100}
+                  plotLines={this.state.thresholdHumidity}
                   />
                   </div>
                </div>
