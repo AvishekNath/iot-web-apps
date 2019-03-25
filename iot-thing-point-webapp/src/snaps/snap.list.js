@@ -108,7 +108,8 @@ const styles = theme => ({
     bottom: '2em'
   },
   status: {
-    cursor: 'default'
+    cursor: 'default',
+    width: '100px'
   }
 });
 
@@ -219,7 +220,10 @@ class SnapDashBoard extends React.Component {
       let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapstorelist';
       axios({
         method:'get',
-        url: url
+        url: url,
+        params: {
+          'serial': this.props.serial
+        }
       })
       .then(res => {
         let data = res.data;    

@@ -173,9 +173,7 @@ class Dashboard extends React.Component {
                 color="inherit"
               >
                 <AccountCircle />
-            </IconButton>
-
-           
+            </IconButton> 
 
           </Toolbar>
         </AppBar>
