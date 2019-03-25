@@ -261,7 +261,7 @@ class GatewayDashBoard extends React.Component {
           </TableHead>
           <TableBody>
               {rows.map(row => (
-              <TableRow key={row.mac_address}>
+              <TableRow key={row.serial}>
                   <TableCell component="th" scope="row">
                   {row.mac_address}
                   </TableCell>
@@ -273,7 +273,7 @@ class GatewayDashBoard extends React.Component {
                       component="button"
                       variant="body2"
                       onClick={() => {
-                        this.redirectToSnap(row.mac_address);
+                        this.redirectToSnap(row.serial);
                       }}
                     >
                       {row.bundlename[0]}
