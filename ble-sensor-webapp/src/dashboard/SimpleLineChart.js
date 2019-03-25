@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts';
 import {
-  HighchartsChart, Chart, withHighcharts, XAxis, YAxis, Title, Subtitle, Legend, LineSeries
+  HighchartsChart, Chart, withHighcharts, XAxis, YAxis, Title, Subtitle, Tooltip, Legend, LineSeries
 } from 'react-jsx-highcharts';
 
 import Input from '@material-ui/core/Input';
@@ -129,7 +129,7 @@ class SimpleLineChart extends React.Component {
         <Subtitle>Source: thesolarfoundation.com</Subtitle> */}
 
         <Legend layout="vertical" align="right" verticalAlign="middle" />
-
+        <Tooltip valueSuffix=" " shared />
         <XAxis type="datetime">
             <XAxis.Title>Time</XAxis.Title>
         </XAxis>
