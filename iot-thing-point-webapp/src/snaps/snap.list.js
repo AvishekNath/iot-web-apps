@@ -18,7 +18,7 @@ import history from '../history.js';
 import axios from 'axios';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import {WbCloudy, RotateRight, Cancel} from '@material-ui/icons';
+import {WbCloudy, RotateRight, Cancel, Delete} from '@material-ui/icons';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
@@ -402,6 +402,10 @@ class SnapDashBoard extends React.Component {
 
                     {row.status === 'Failed' && (
                       <Cancel/>
+                    )}
+
+                    {row.status === 'Deleting' && (
+                      <Delete/>
                     )}
 
                     <div className={classes.status}>
