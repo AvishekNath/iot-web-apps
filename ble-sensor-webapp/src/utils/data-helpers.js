@@ -59,7 +59,7 @@ export const marshallLineChartData = (series) => {
   series = series.sort(function(a,b){
     // Turn your strings into dates, and then subtract them
     // to get a value that is either negative, positive, or zero.
-    return new Date(b.ts) - new Date(a.ts);
+    return new Date(b.ts * 1000) - new Date(a.ts * 1000);
   });
   const newData = series.map(data => {
     return [

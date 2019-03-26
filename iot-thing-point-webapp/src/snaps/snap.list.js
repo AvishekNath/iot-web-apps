@@ -393,7 +393,7 @@ class SnapDashBoard extends React.Component {
 
                   <TableCell align="left">
                     {row.status === 'Installing' && (
-                      <RotateRight/>
+                      <RotateRight className="rotation"/>
                     )}
 
                     {row.status === 'Installed' && (

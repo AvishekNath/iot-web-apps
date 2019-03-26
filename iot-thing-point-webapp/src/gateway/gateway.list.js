@@ -252,7 +252,7 @@ class GatewayDashBoard extends React.Component {
           <TableHead>
               <TableRow>
                   <CustomTableCell>Mac Address</CustomTableCell>
-                  <CustomTableCell align="left">HostName</CustomTableCell>
+                  <CustomTableCell align="left">Host Name</CustomTableCell>
                   <CustomTableCell align="left">Location</CustomTableCell>
                   <CustomTableCell align="left">Snap List</CustomTableCell>              
                   <CustomTableCell align="left">Status</CustomTableCell>
