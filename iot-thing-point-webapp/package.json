@@ -40,6 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "debug": "react-scripts --debug"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
