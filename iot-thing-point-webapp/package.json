@@ -29,11 +29,13 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "recharts": "^1.5.0",
-    "typescript": "^3.3.4000",
-    "yargs": "^13.0.0"
+      "typescript": "^3.3.4000",
+    "yargs": "^13.0.0",
+    "express": "^4.16.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "startdev": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
