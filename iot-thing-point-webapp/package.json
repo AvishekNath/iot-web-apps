@@ -10,10 +10,11 @@
     "@material-ui/icons": "^3.0.2",
     "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.11",
-    "@types/node": "^11.11.7",
-    "@types/react": "^16.8.8",
+    "@types/node": "^11.12.2",
+    "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "firebase": "^5.8.4",
     "flexboxgrid": "^6.3.1",
     "highcharts": "^7.0.3",
@@ -29,9 +30,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "recharts": "^1.5.0",
-      "typescript": "^3.3.4000",
-    "yargs": "^13.0.0",
-    "express": "^4.16.4"
+    "typescript": "^3.4.1",
+    "yargs": "^13.0.0"
   },
   "scripts": {
     "startdev": "react-scripts start",
