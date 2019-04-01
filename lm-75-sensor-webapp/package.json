@@ -8,7 +8,12 @@
     "@google-cloud/pubsub": "^0.24.1",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.12.2",
+    "@types/react": "^16.8.10",
+    "@types/react-dom": "^16.8.3",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "firebase": "^5.8.4",
     "flexboxgrid": "^6.3.1",
     "highcharts": "^7.0.3",
@@ -24,8 +29,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "recharts": "^1.5.0",
-    "yargs": "^13.0.0",
-    "express": "^4.16.4"
+    "typescript": "^3.4.1",
+    "yargs": "^13.0.0"
   },
   "scripts": {
     "startdev": "react-scripts start",
