@@ -199,7 +199,7 @@ class SnapDashBoard extends React.Component {
       .then(res => {
         let data = res.data;    
         console.log(data);
-        this.getSnapList();
+        this.getSnapList(row, 'Deleting');
       });
     };
     // Add Snap
@@ -225,7 +225,7 @@ class SnapDashBoard extends React.Component {
       .then(res => {
         let data = res.data;    
         console.log('Add Snap', data); 
-        this.getSnapList();
+        this.getSnapList(snapObj, 'Installing'); // Enable http polling
       });
       
     };
@@ -246,11 +246,12 @@ class SnapDashBoard extends React.Component {
         this.setState({ addSnapData: data });
         console.log('List Snap', data); 
       });
-      
     };
 
-    getSnapList = () => {
+
+    getList = (snapObj, action) =>{
       let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapbundleinfo&serial=' + this.props.serial;
+      
       axios.get(url)
         .then(res => {
           let data = res.data;    
@@ -258,6 +259,45 @@ class SnapDashBoard extends React.Component {
             snapData: data
           });
       });
+    };
+
+    getSnapList = (snapObj, action) => { 
+
+      if(action){
+        this.getList(snapObj, action);
+
+        // repeat with the interval of 10 seconds
+        let timerId = setInterval(() => {
+
+          if(action.toLowerCase() === 'deleting'){
+            var found = this.state.snapData.find(function(data) {
+              return data.name === snapObj.name;
+            });  
+            if(!found){
+              clearInterval(timerId);
+              console.log('pooling intermittently stopped ');
+            }  
+            
+          }else if(action.toLowerCase() === 'installing'){         
+            let filterInstalled = this.state.snapData.filter((obj) => {
+              return (obj.name === snapObj.name && (obj.status.toLowerCase() === 'installed' || obj.status.toLowerCase() === 'failed'));
+            });  
+            if(filterInstalled.length > 0){
+              clearInterval(timerId);
+              console.log('pooling intermittently stopped');
+            }
+          }
+
+          this.getList(snapObj, action);
+
+        }, 10000); 
+
+        // after 120 seconds stop
+        setTimeout(() => { clearInterval(timerId); console.log('pooling stopped'); }, 120000);
+
+      }else{
+        this.getList();
+      }
     };
 
     componentDidMount(){
@@ -405,7 +445,7 @@ class SnapDashBoard extends React.Component {
                     )}
 
                     {row.status === 'Deleting' && (
-                      <Delete/>
+                      <RotateRight className="rotation"/>
                     )}
 
                     <div className={classes.status}>

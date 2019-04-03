@@ -20,6 +20,7 @@
     "highcharts": "^7.0.3",
     "http2": "^3.3.7",
     "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "pubnub": "^4.21.7",
     "react": "^16.8.3",
@@ -40,7 +41,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "debug": "react-scripts --debug"
-    
   },
   "eslintConfig": {
     "extends": "react-app"
