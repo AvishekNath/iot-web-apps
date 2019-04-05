@@ -160,7 +160,7 @@ function getModalStyle() {
 }
  
 class SnapDashBoard extends React.Component {
-
+    _isMounted = false;
     constructor(props) {
         super(props);   
         this.state = { 
@@ -182,9 +182,14 @@ class SnapDashBoard extends React.Component {
     deleteSnap = (row) => {
       console.log(row);
       let rows = this.state.snapData;
-      let filteredRows = rows.filter((obj) => {
-        return obj.name !== row.name;
+      let newSnapData = rows.map((obj) => {
+        if(row.name === obj.name){
+          return Object.assign(obj, {del_enable: false});
+        }
+        return obj;
       });
+
+      this.setState({snapData: newSnapData});
 
       // Delete Snap
       let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=deletesnap';
@@ -213,7 +218,7 @@ class SnapDashBoard extends React.Component {
       });
 
       this.setState({ addSnapData: addedSnapData });
-      let url = ' https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=addsnap';
+      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=addsnap';
       axios({
         method:'get',
         url: url,
@@ -254,10 +259,12 @@ class SnapDashBoard extends React.Component {
       
       axios.get(url)
         .then(res => {
-          let data = res.data;    
-          this.setState({
-            snapData: data
-          });
+          let data = res.data;   
+          if (this._isMounted) { 
+            this.setState({
+              snapData: data
+            });
+          }
       });
     };
 
@@ -301,7 +308,12 @@ class SnapDashBoard extends React.Component {
     };
 
     componentDidMount(){
+      this._isMounted = true;
       this.getSnapList();
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
     }
 
     render(){
@@ -424,7 +436,7 @@ class SnapDashBoard extends React.Component {
                       size="small" 
                       variant="contained" 
                       color="secondary"
-                      disabled={!row.del_enable}
+                      disabled={(row.status === 'Deleting' || row.status === 'Installing') || !row.del_enable}
                       onClick={this.deleteSnap.bind(this, row)}
                     >
                       Delete 
