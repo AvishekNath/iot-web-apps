@@ -161,11 +161,7 @@ class Dashboard extends React.Component {
             >
               Thing Point Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+             
 
             <IconButton color="inherit"
                 aria-haspopup="true"
