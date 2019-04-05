@@ -24,7 +24,7 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="TP Dashboard" />
+      <ListItemText primary="Dashboard" />
     </ListItem>
     
   </div>
