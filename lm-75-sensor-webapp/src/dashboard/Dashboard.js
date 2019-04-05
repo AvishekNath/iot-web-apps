@@ -33,7 +33,7 @@ const styles = theme => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed,
-    background:'#f5f5f5' // #2196f3 - f5f5f5
+    background:'#2196f3' // #2196f3 - f5f5f5
   },
   toolbarIcon: {
     display: 'flex',
@@ -138,7 +138,6 @@ class Dashboard extends React.Component {
         <CssBaseline />
         <AppBar
           position="absolute"
-          color="default"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
           <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
@@ -161,12 +160,7 @@ class Dashboard extends React.Component {
               className={classes.title}
             >
               LM-75
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            </Typography>             
 
             <IconButton color="inherit"
                 aria-haspopup="true"

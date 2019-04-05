@@ -226,7 +226,7 @@ class GatewayDashBoard extends React.Component {
                   {/* <CustomTableCell align="left">Sensor Id</CustomTableCell> */}
                   <CustomTableCell align="left">Thing Point Name</CustomTableCell>
                   <CustomTableCell align="left">Version</CustomTableCell>
-                  <CustomTableCell align="left">Health Charts</CustomTableCell>
+                  <CustomTableCell align="left">Metric</CustomTableCell>
               </TableRow>
           </TableHead>
           <TableBody>
