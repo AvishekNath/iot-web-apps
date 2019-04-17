@@ -146,7 +146,7 @@ const rows = [
 ];
 
 class GatewayDashBoard extends React.Component {
-
+    _isMounted = false;
     constructor(props) {
         super(props);   
         this.state = { 
@@ -158,6 +158,7 @@ class GatewayDashBoard extends React.Component {
     } 
 
     componentDidMount() {
+      this._isMounted = true;
       let docRows = [];
       let online = 0;
       let offline = 0;
@@ -173,16 +174,20 @@ class GatewayDashBoard extends React.Component {
                 offline+=1;
             }
           });
-
-          this.setState({
-            rows: docRows,
-            total: docRows.length,
-            online: online,
-            offline: offline
-          });
+          if(this._isMounted){
+            this.setState({
+              rows: docRows,
+              total: docRows.length,
+              online: online,
+              offline: offline
+            });
+          }
       });
     }
-  
+    
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
 
     redirectToTarget(mac){
       history.push('/health/' + mac + '/');
@@ -293,24 +298,28 @@ class GatewayDashBoard extends React.Component {
                   </TableCell>
                   <TableCell align="left">
                       {row.health === 'green' && (
+                        
                           <Tooltip title="View health charts" placement="top-start">
-                            <Fab size="small" color="primary" aria-label="Add"
+                            <div> <Fab size="small" color="primary" aria-label="Add"
                               onClick={() => this.redirectToTarget(row.serial)}
                               className={classes.fabActive}
                               >
                               <TrendingUp/>
-                            </Fab>  
+                            </Fab> </div> 
                           </Tooltip>
+                          
                                             
                       )}
 
                       {row.health === 'red' && (
+                        
                           <Tooltip title="View health charts" placement="top-start"> 
-                           <Fab size="small" color="secondary" aria-label="Edit" disabled={row.health === 'red'}
+                           <div> <Fab size="small" color="secondary" aria-label="Edit" disabled={row.health === 'red'}
                               className={classes.fabOffline}>
                               <TrendingDown/>
-                         </Fab>
+                         </Fab></div>
                           </Tooltip>
+                        
                       )}                
                   </TableCell>
               </TableRow>

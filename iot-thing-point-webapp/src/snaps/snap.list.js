@@ -96,7 +96,8 @@ const styles = theme => ({
     backgroundColor: '#2196f3'
   },
   snapCard: {
-    backgroundColor: '#efefef'
+    backgroundColor: '#efefef',
+    marginBottom: '1em'
   },
   installBtn: {
     float: 'right',
@@ -116,6 +117,11 @@ const styles = theme => ({
     top:'-5px',
     padding:'5px 10px',
     color: '#90a4ae'
+  },
+  rowContainer: {
+    height: '220px',
+    overflowY: 'scroll',
+    padding: '1em'
   }
 });
 
@@ -346,14 +352,14 @@ class SnapDashBoard extends React.Component {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className={classes.rowContainer + ' row'} >
 
                     {addSnapData.map(snap => (
-                      <div key={snap.serial} className="col-xs">
+                      <div key={snap.serial} className="col-xs-3">
                         <Card className={snap.clicked === true ? classes.snapCard + ' disable-card' :  classes.snapCard}>
                           <CardActionArea>                    
                             <CardContent>
-                              <Typography gutterBottom variant="h6" component="h2">
+                              <Typography gutterBottom variant="subheading" component="h2">
                                 {snap.name}
                               </Typography>
                               <hr/>
@@ -430,17 +436,19 @@ class SnapDashBoard extends React.Component {
                       
                       {row.devmode ? ' YES' : ' NO'}
                   </TableCell> */}
-
+                  
                   <TableCell align="left">
-                    <Button 
-                      size="small" 
-                      variant="contained" 
-                      color="secondary"
-                      disabled={(row.status === 'Deleting' || row.status === 'Installing') || !row.del_enable}
-                      onClick={this.deleteSnap.bind(this, row)}
-                    >
-                      Delete 
-                    </Button>
+                    <div>
+                      <Button 
+                        size="small" 
+                        variant="contained" 
+                        color="secondary"
+                        disabled={(row.status === 'Deleting' || row.status === 'Installing') || !row.del_enable}
+                        onClick={this.deleteSnap.bind(this, row)}
+                      >
+                        Delete 
+                      </Button>
+                    </div>
                   </TableCell>
 
                   <TableCell align="left">

@@ -174,10 +174,10 @@ class GatewayHealth extends React.Component {
              <div className="row">
                <div className="col-xs-10">
                <Typography variant="h6" color="textSecondary" gutterBottom>
-                  Thing Health
+                  Metrics
                </Typography>
                </div>
-
+        
                <div className="col-xs-2 end-xs">
                   <IconButton color="inherit"
                   aria-haspopup="true"

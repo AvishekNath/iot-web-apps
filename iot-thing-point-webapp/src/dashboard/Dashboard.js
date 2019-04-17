@@ -24,6 +24,7 @@ import GatewayHealth from '../gateway/health/health.index';
 import SnapManagement from './../snaps/snap.index';
 import { AccountCircle } from '@material-ui/icons';
 import { Settings } from '@material-ui/icons';
+import AgGridAdapterComponent from './../adapters/ag-grid/ag-grid.adapter.component';
 
 const drawerWidth = 240;
 
@@ -205,6 +206,7 @@ class Dashboard extends React.Component {
                   <Route path="/gateway/" exact component={(props) => <GatewayManagement {...props}/>} />
                   <Route path="/health/:serial/" exact component={(props) => <GatewayHealth {...props}/>} />
                   <Route path="/snap/:serial/" exact component={(props) => <SnapManagement {...props}/>} />
+                  <Route path="/grid/" exact component={(props) => <AgGridAdapterComponent {...props}/>} />
              </Switch>
             </div>
 
