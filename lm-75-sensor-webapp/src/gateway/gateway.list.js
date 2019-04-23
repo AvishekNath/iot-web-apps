@@ -149,6 +149,7 @@ class GatewayDashBoard extends React.Component {
       this.state = { 
           sensorList: []
       };
+      
       this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/lm75-rest-endpoint`;
     }
 

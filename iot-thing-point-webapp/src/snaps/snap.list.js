@@ -198,7 +198,7 @@ class SnapDashBoard extends React.Component {
       this.setState({snapData: newSnapData});
 
       // Delete Snap
-      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=deletesnap';
+      let url = 'https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server?type=deletesnap';
       axios({
         method:'get',
         url: url,
@@ -224,7 +224,7 @@ class SnapDashBoard extends React.Component {
       });
 
       this.setState({ addSnapData: addedSnapData });
-      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=addsnap';
+      let url = 'https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server?type=addsnap';
       axios({
         method:'get',
         url: url,
@@ -243,7 +243,7 @@ class SnapDashBoard extends React.Component {
 
     // List Snap
     listSnap = (snapObj = {}) => {      
-      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapstorelist';
+      let url = 'https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server?type=snapstorelist';
       axios({
         method:'get',
         url: url,
@@ -261,7 +261,7 @@ class SnapDashBoard extends React.Component {
 
 
     getList = (snapObj, action) =>{
-      let url = 'https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=snapbundleinfo&serial=' + this.props.serial;
+      let url = 'https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server?type=snapbundleinfo&serial=' + this.props.serial;
       
       axios.get(url)
         .then(res => {

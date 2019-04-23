@@ -40,6 +40,7 @@ class GatewayHealthChart extends React.Component {
          }],
       }; 
 
+      
       this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/lm75-rest-endpoint`;
    }
 

@@ -162,7 +162,7 @@ class GatewayDashBoard extends React.Component {
       let docRows = [];
       let online = 0;
       let offline = 0;
-      axios.get(`https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server?type=thingpointlist`)
+      axios.get(`https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server?type=thingpointlist`)
         .then(res => {
           let data = res.data;    
           data.forEach(function(doc) {

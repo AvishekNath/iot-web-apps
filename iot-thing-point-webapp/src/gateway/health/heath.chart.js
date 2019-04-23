@@ -51,7 +51,7 @@ class GatewayHealthChart extends React.Component {
       }; 
       
 
-      this.chartUrl = `https://us-central1-sage-buttress-230707.cloudfunctions.net/Visibility-server`;
+      this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/visibility-server`;
    }
  
    componentDidMount() { 

@@ -60,6 +60,7 @@ class GatewayHealthChart extends React.Component {
             }
          }]
       }; 
+      
 
       this.chartUrl = `https://us-central1-eternal-insight-234909.cloudfunctions.net/ble-rest-endpoint`;
    }
